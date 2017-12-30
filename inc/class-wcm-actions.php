@@ -1,5 +1,5 @@
 <?php 
-namespace gaad_calc_plugin;
+namespace plugins_main_namespace;
    
 class wcm_actions {
   
@@ -36,20 +36,23 @@ class wcm_actions {
           mkdir($dest, $permissions);
       }
 
-      // Loop through the folder
-      $dir = dir($source);
-      while (false !== $entry = $dir->read()) {
-          // Skip pointers
-          if ($entry == '.' || $entry == '..') {
-              continue;
-          }
+      if ( is_dir( $source ) ) {
+            // Loop through the folder
+            $dir = dir($source);
+            while (false !== $entry = $dir->read()) {
+                // Skip pointers
+                if ($entry == '.' || $entry == '..') {
+                    continue;
+                }
 
-          // Deep copy directories
-          wcm_actions::xcopy("$source/$entry", "$dest/$entry", $permissions);
-      }
+                // Deep copy directories
+                wcm_actions::xcopy("$source/$entry", "$dest/$entry", $permissions);
+            }
 
-      // Clean up
-      $dir->close();
+            // Clean up
+            $dir->close();
+      } else return false;
+      
       return true;
   }
 

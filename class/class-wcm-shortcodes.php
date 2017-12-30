@@ -1,5 +1,5 @@
 <?php 
-namespace gaad_calc_plugin;
+namespace plugins_main_namespace;
 
 
 class wcm_shortcodes {

@@ -347,6 +347,25 @@
 	},
 	"buffers":
 	[
+		{
+			"contents": "Searching 22713 files for \"kredytslider\" (case sensitive)\n\nC:\\xampp7\\htdocs\\gaadcalc\\wp-content\\plugins\\gaad_calc\\class\\class-wcm-shortcodes.php:\n    5  class wcm_shortcodes {\n    6  \n    7: \tpublic static function kredytslider2( $atts, $content = \"\" ) {\n    8  \t\t$defaults = array( \n    9  \t\t\t'id' => uniqid( 'gslider_' ),\n\nC:\\xampp7\\htdocs\\gaadcalc\\wp-content\\plugins\\gaad_calc\\css\\app.css.map:\n    2  \"version\": 3,\n    3  \"mappings\": \"AAAA,kBAAkB;AAElB,2BAA2B;EAC1B,KAAK,EAAC,MAAM;EAAC,MAAM,EAAC,IAAI;EAAC,aAAa,EAAC,KAAK;EAAC,SAAS,EAAC,6BAA0B;EAAC,IAAI,EAAC,uCAAuC;;;AAC/H,kCAAkC;EAAC,OAAO,EAAC,OAAO;EAAC,SAAS,EAAC,MAAM;EAAC,SAAS,EAAC,wCAAsC;EAAC,OAAO,EAAC,KAAK;EAAC,gBAAgB,EAAC,MAAM;;;AAC1J,SAAS;EACT,gBAAgB,EAAE,KAAK;EACvB,MAAM,EAAE,iBAAiB;EACzB,aAAa,EAAE,GAAG;EAClB,UAAU,EAAE,0BAA0B;EACtC,OAAO,EAAE,IAAI;EAKb;;;;;;;;;;;;;;;;;;;;;IAqBE;;AAEA,gCAAE;EACD,UAAU,EAAE,IAAI;EAChB,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,aAAa;;AAE9B,mCAAE;EACD,SAAS,EAAE,iBAAiB;EACzB,SAAS,EAAE,IAAI;EACf,KAAK,EAAE,IAAI;EACX,WAAW,EAAE,IAAI;;AAEpB,iDAAe;EACd,UAAU,EAAE,IAAI;;AAEjB,gDAAc;EACb,UAAU,EAAE,KAAK;;AAOpB,mBAAS;EACR,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,eAAe,EAAE,aAAa;EAC7B,WAAW,EAAE,QAAQ;;AAEtB,6BAAU;EACT,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACrB,WAAW,EAAE,QAAQ;;AAIpB,6CAAC;EACA,aAAa,EAAE,IAAI;EACnB,SAAS,EAAE,IAAI;EACf,WAAW,EAAC,IAAI;EAChB,MAAM,EAAC,CAAC;;AAGT,6CAAC;EACA,SAAS,EAAE,IAAI;;AAKf,0CAAc;EACf,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,IAAI;;AAEjB,4CAAC;EACA,MAAM,EAAE,CAAC;;AAGV,+CAAI;EACH,YAAY,EAAC,IAAI;EACjB,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,QAAQ;;AASnB,+DAAI;EACH,YAAY,EAAC,IAAI;EACnB,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,QAAQ;;AAEnB,6EAAe;EACd,WAAW,EAAE,MAAM;;AAEpB,8EAAgB;EACf,SAAS,EAAE,KAAK;EAClB,OAAO,EAAE,WAAW;EAClB,WAAW,EAAE,QAAQ;EACrB,eAAe,EAAE,QAAQ;;AAE1B,4EAAc;EACf,WAAW,EAAE,MAAM;;AASvB,oBAAU;EACT,aAAa,EAAE,IAAI\",\n    4: \"sources\": [\"../sass/gkredytslider-app.scss\"],\n    5  \"names\": [],\n    6  \"file\": \"app.css\"\n\nC:\\xampp7\\htdocs\\gaadcalc\\wp-content\\plugins\\gaad_calc\\inc\\class-wcm-actions.php:\n  145  \n  146      if(  GAAD_PLUGIN_TEMPLATE_ENV === 'DEV' ){      \n  147:       wp_enqueue_style( 'gkredytslider-css', GAAD_PLUGIN_TEMPLATE_URL . '/css/app.css', false, false);\n  148      }\n  149      \n  150      if(  GAAD_PLUGIN_TEMPLATE_ENV === 'DIST' ){\n  151:       wp_enqueue_style( 'gkredytslider-css', GAAD_PLUGIN_TEMPLATE_URL . '/dist/css/app.min.css', false, false);\n  152      }\n  153       \n  ...\n  156    \n  157    public static function app_shortcodes(){\n  158:       add_shortcode( 'kredytslider2', GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'wcm_shortcodes::kredytslider2' );\n  159    }\n  160  \n  ...\n  182    public static function common_scripts(){\n  183       \n  184:   //   wp_enqueue_script( 'gkredytslider-app-js', GAAD_PLUGIN_TEMPLATE_URL . '/js/gkredytslider-app.js', array( 'vue-js' ), false, true );\n  185    }\n  186    \n\nC:\\xampp7\\htdocs\\gaadcalc\\wp-content\\plugins\\gaad_plugin_template\\class\\class-wcm-shortcodes.php:\n    5  class wcm_shortcodes {\n    6  \n    7: \tpublic static function kredytslider( $atts, $content = \"\" ) {\n    8  \t\t$defaults = array( \n    9  \t\t\t'id' => uniqid( 'gslider_' ),\n\nC:\\xampp7\\htdocs\\gaadcalc\\wp-content\\plugins\\gaad_plugin_template\\css\\app.css.map:\n    2  \"version\": 3,\n    3  \"mappings\": \"AAAA,kBAAkB;AAElB,2BAA2B;EAC1B,KAAK,EAAC,MAAM;EAAC,MAAM,EAAC,IAAI;EAAC,aAAa,EAAC,KAAK;EAAC,SAAS,EAAC,6BAA0B;EAAC,IAAI,EAAC,uCAAuC;;;AAC/H,kCAAkC;EAAC,OAAO,EAAC,OAAO;EAAC,SAAS,EAAC,MAAM;EAAC,SAAS,EAAC,wCAAsC;EAAC,OAAO,EAAC,KAAK;EAAC,gBAAgB,EAAC,MAAM;;;AAC1J,SAAS;EACT,gBAAgB,EAAE,KAAK;EACvB,MAAM,EAAE,iBAAiB;EACzB,aAAa,EAAE,GAAG;EAClB,UAAU,EAAE,0BAA0B;EACtC,OAAO,EAAE,IAAI;EAKb;;;;;;;;;;;;;;;;;;;;;IAqBE;;AAEA,gCAAE;EACD,UAAU,EAAE,IAAI;EAChB,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,aAAa;;AAE9B,mCAAE;EACD,SAAS,EAAE,iBAAiB;EACzB,SAAS,EAAE,IAAI;EACf,KAAK,EAAE,IAAI;EACX,WAAW,EAAE,IAAI;;AAEpB,iDAAe;EACd,UAAU,EAAE,IAAI;;AAEjB,gDAAc;EACb,UAAU,EAAE,KAAK;;AAOpB,mBAAS;EACR,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,eAAe,EAAE,aAAa;EAC7B,WAAW,EAAE,QAAQ;;AAEtB,6BAAU;EACT,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACrB,WAAW,EAAE,QAAQ;;AAIpB,6CAAC;EACA,aAAa,EAAE,IAAI;EACnB,SAAS,EAAE,IAAI;EACf,WAAW,EAAC,IAAI;EAChB,MAAM,EAAC,CAAC;;AAGT,6CAAC;EACA,SAAS,EAAE,IAAI;;AAKf,0CAAc;EACf,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,IAAI;;AAEjB,4CAAC;EACA,MAAM,EAAE,CAAC;;AAGV,+CAAI;EACH,YAAY,EAAC,IAAI;EACjB,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,QAAQ;;AASnB,+DAAI;EACH,YAAY,EAAC,IAAI;EACnB,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,QAAQ;;AAEnB,6EAAe;EACd,WAAW,EAAE,MAAM;;AAEpB,8EAAgB;EACf,SAAS,EAAE,KAAK;EAClB,OAAO,EAAE,WAAW;EAClB,WAAW,EAAE,QAAQ;EACrB,eAAe,EAAE,QAAQ;;AAE1B,4EAAc;EACf,WAAW,EAAE,MAAM;;AASvB,oBAAU;EACT,aAAa,EAAE,IAAI\",\n    4: \"sources\": [\"../sass/gkredytslider-app.scss\"],\n    5  \"names\": [],\n    6  \"file\": \"app.css\"\n\nC:\\xampp7\\htdocs\\gaadcalc\\wp-content\\plugins\\gaad_plugin_template\\inc\\class-wcm-actions.php:\n  142  \n  143      if(  GAAD_PLUGIN_TEMPLATE_ENV === 'DEV' ){      \n  144:       wp_enqueue_style( 'gkredytslider-css', GAAD_PLUGIN_TEMPLATE_URL . '/css/app.css', false, false);\n  145      }\n  146      \n  147      if(  GAAD_PLUGIN_TEMPLATE_ENV === 'DIST' ){\n  148:       wp_enqueue_style( 'gkredytslider-css', GAAD_PLUGIN_TEMPLATE_URL . '/dist/css/app.min.css', false, false);\n  149      }\n  150       \n  ...\n  153    \n  154    public static function app_shortcodes(){\n  155:       add_shortcode( 'kredytslider', GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'wcm_shortcodes::kredytslider' );\n  156    }\n  157  \n  ...\n  179    public static function common_scripts(){\n  180       \n  181:   //   wp_enqueue_script( 'gkredytslider-app-js', GAAD_PLUGIN_TEMPLATE_URL . '/js/gkredytslider-app.js', array( 'vue-js' ), false, true );\n  182    }\n  183    \n\n16 matches across 6 files\n",
+			"settings":
+			{
+				"buffer_size": 5641,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "gaad_plugin_template.php",
+			"settings":
+			{
+				"buffer_size": 3312,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -421,11 +440,18 @@
 	},
 	"expanded_folders":
 	[
-		"/C/xampp7/htdocs/gaadcalc/wp-content",
-		"/C/xampp7/htdocs/gaadcalc/wp-content/plugins"
+		"/C/xampp7/htdocs/gaadcalc/wp-content/plugins/gaad_plugin_template",
+		"/C/xampp7/htdocs/gaadcalc/wp-content/plugins/gaad_plugin_template/class",
+		"/C/xampp7/htdocs/gaadcalc/wp-content/plugins/gaad_plugin_template/inc",
+		"/C/xampp7/htdocs/gaadcalc/wp-content/plugins/gaad_plugin_template/sass"
 	],
 	"file_history":
 	[
+		"/C/xampp7/htdocs/gaadcalc/wp-content/plugins/gaad_plugin_template/inc/class-wcm-actions.php",
+		"/C/xampp7/htdocs/gaadcalc/wp-content/plugins/gaad_calc/inc/class-wcm-actions.php",
+		"/C/xampp7/htdocs/gaadcalc/wp-content/plugins/gaad_plugin_template/gaad_plugin_template.php",
+		"/C/xampp7/htdocs/gaadcalc/wp-content/plugins/gaad_plugin_template/inc/starter.php",
+		"/C/xampp7/htdocs/gaadcalc/wp-content/plugins/gaad_plugin_template/gaad-plugin-template.sublime-project",
 		"/C/xampp7/htdocs/gaadcalc/wp-content/plugins/gaad_kredyt_slider/gaad_kredyt_slider.php",
 		"/C/xampp7/htdocs/gaadcalc/wp-content/plugins/gaad_kredyt_slider/inc/class-wcm-actions.php",
 		"/C/xampp7/htdocs/gaadcalc/wp-content/plugins/gaad_kredyt_slider/inc/class-wcm-filters.php",
@@ -548,12 +574,7 @@
 		"/C/Users/Gaad-1/Desktop/przenosiny/fachowe-remonty.pl/wp-content/cache/supercache/fachowe-remonty.com/oferta/tynki-maszynowe-cementowe-i-gipsowe/index.html",
 		"/C/Users/Gaad-1/Desktop/przenosiny/fachowe-remonty.pl/wp-content/cache/supercache/fachowe-remonty.com/oferta/ukladanie-paneli-podlogowych-i-wykladzin-dywanowych/index.html",
 		"/C/Users/Gaad-1/Desktop/przenosiny/fachowe-remonty.pl/wp-content/cache/supercache/fachowe-remonty.com/oferta/wstawianie-oraz-regulacja-drzwi-okien-parapetow/index.html",
-		"/C/Users/Gaad-1/Desktop/przenosiny/fachowe-remonty.pl/wp-content/cache/supercache/fachowe-remonty.com/partners/cekol/index.html",
-		"/C/Users/Gaad-1/Desktop/przenosiny/fachowe-remonty.pl/wp-content/cache/supercache/fachowe-remonty.com/testimonials/zaufali-nam-tytul-1/index.html",
-		"/C/Users/Gaad-1/Desktop/przenosiny/fachowe-remonty.pl/wp-content/cache/supercache/fachowe-remonty.com/uslugi-remontowe/index.html",
-		"/C/Users/Gaad-1/Desktop/przenosiny/fachowe-remonty.pl/wp-content/plugins/gaad-wp-boxes/class/class-gaad-page-options.php",
-		"/C/Users/Gaad-1/Desktop/przenosiny/fachowe-remonty.pl/fachowe-remonty.com.sql",
-		"/C/Users/Gaad-1/Desktop/przenosiny/fachowe-remonty.pl/wp-content/cache/supercache/fachowe-remonty.com/partners/brinkmann/index.html"
+		"/C/Users/Gaad-1/Desktop/przenosiny/fachowe-remonty.pl/wp-content/cache/supercache/fachowe-remonty.com/partners/cekol/index.html"
 	],
 	"find":
 	{
@@ -564,6 +585,8 @@
 		"height": 104.0,
 		"where_history":
 		[
+			"C:\\xampp7\\htdocs\\gaadcalc\\wp-content\\plugins",
+			"C:\\xampp7\\htdocs\\gaadcalc\\wp-content\\plugins\\gaad_kredyt_slider",
 			"<current file>,C:\\xampp7\\htdocs\\gaadcalc\\wp-content\\plugins\\gaad_kredyt_slider",
 			"<current file>",
 			"<current file>,<open folders>",
@@ -613,6 +636,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"kredytslider",
+			"gkredytslider-app",
 			"'\\gaad_calc_plugin\\",
 			"wcm_shortcodes",
 			"'wcm_actions",
@@ -738,9 +763,7 @@
 			"pobierz",
 			"wyslij-email-z-platnosciami",
 			"Brand new device",
-			"John Kensington\tblank",
-			"DEEP FOREST",
-			"\t\t$"
+			"John Kensington\tblank"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -801,8 +824,170 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5641,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										215,
+										227
+									],
+									[
+										1831,
+										1843
+									],
+									[
+										2085,
+										2097
+									],
+									[
+										2275,
+										2287
+									],
+									[
+										2482,
+										2494
+									],
+									[
+										2548,
+										2560
+									],
+									[
+										2689,
+										2701
+									],
+									[
+										2744,
+										2756
+									],
+									[
+										2989,
+										3001
+									],
+									[
+										4615,
+										4627
+									],
+									[
+										4880,
+										4892
+									],
+									[
+										5070,
+										5082
+									],
+									[
+										5277,
+										5289
+									],
+									[
+										5342,
+										5354
+									],
+									[
+										5482,
+										5494
+									],
+									[
+										5537,
+										5549
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								5286,
+								5286
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"default_dir": "C:\\xampp7\\htdocs\\gaadcalc\\wp-content\\plugins\\gaad_plugin_template",
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 702.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "gaad_plugin_template.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3312,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2765,
+								2765
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 270.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -903,40 +1088,20 @@
 			"hide_conflict": false,
 			"restore_index":
 			{
-				"31":
+				"151":
 				{
 					"group": 0,
 					"index": 0
 				},
-				"39":
-				{
-					"group": 0,
-					"index": 1
-				},
-				"43":
-				{
-					"group": 0,
-					"index": 6
-				},
-				"44":
-				{
-					"group": 0,
-					"index": 3
-				},
-				"45":
+				"152":
 				{
 					"group": 0,
 					"index": 2
 				},
-				"46":
+				"165":
 				{
 					"group": 0,
-					"index": 4
-				},
-				"47":
-				{
-					"group": 0,
-					"index": 5
+					"index": 1
 				}
 			},
 			"restore_layout":
