@@ -1,0 +1,8 @@
+node_modules
+_notes
+.sass-cache
+dist/gzip
+vendor
+tmp
+docs
+wp-config.php

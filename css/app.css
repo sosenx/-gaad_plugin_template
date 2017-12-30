@@ -1,0 +1,117 @@
+/* CSS Document */
+.gks-root .ui-slider-handle {
+  width: 2.1rem;
+  height: 2rem;
+  border-radius: 10rem;
+  transform: translate(-0.35rem, -0.35rem);
+  font: normal normal normal 14px/1 FontAwesome;
+}
+
+.gks-root .ui-slider-handle:before {
+  content: "\f0c9";
+  font-size: 1.1rem;
+  transform: rotate(90deg) translate(0.9rem, 0.05rem);
+  display: block;
+  transform-origin: center;
+}
+
+.gks-root {
+  background-color: white;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  box-shadow: 3px 3px 16px 0px #4d4d4d4a;
+  padding: 24px;
+  /*
+  	.ui-slider-handle{
+  		width: 2.1rem;
+  	    height: 2rem;
+  	    border-radius: 10rem;
+  	    transform: translate(-.35rem, -.35rem);
+  		font: normal normal normal 14px/1 FontAwesome;
+  
+  		&:before{
+  			content: "\f0c9";
+  		    font-size: 1.1rem;
+  		    transform: rotate(90deg) translate(0.9rem, 0.05rem);
+  		    display: block;
+  		    transform-origin: center;
+  		}
+  	
+  	.ui-state-active{
+  		 styl podczas wleczenia handlera 
+  	}
+  	   
+  	}
+  */
+}
+.gks-root .gks-slider-caption ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+.gks-root .gks-slider-caption ul li {
+  transform: translateY(-40px);
+  font-size: 12px;
+  color: gray;
+  font-weight: bold;
+}
+.gks-root .gks-slider-caption ul li:first-of-type {
+  text-align: left;
+}
+.gks-root .gks-slider-caption ul li:last-of-type {
+  text-align: right;
+}
+.gks-root .text-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.gks-root .text-bar > section {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+.gks-root .text-bar > section:first-of-type i {
+  padding-right: 10px;
+  font-size: 20px;
+  line-height: 100%;
+  margin: 0;
+}
+.gks-root .text-bar > section:first-of-type p {
+  font-size: 16px;
+}
+.gks-root .text-bar > section:last-of-type {
+  font-size: 24px;
+  font-weight: bold;
+}
+.gks-root .text-bar > section:last-of-type p {
+  margin: 0;
+}
+.gks-root .text-bar > section:last-of-type span {
+  padding-left: 12px;
+  font-size: 18px;
+  align-items: baseline;
+}
+.gks-root .text-bar.gks-summary-val > section:last-of-type span {
+  padding-left: 12px;
+  font-size: 18px;
+  align-items: baseline;
+}
+.gks-root .text-bar.gks-summary-val > section:last-of-type span:first-of-type {
+  font-weight: normal;
+}
+.gks-root .text-bar.gks-summary-val > section:last-of-type span:nth-of-type(2) {
+  min-width: 100px;
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: flex-end;
+}
+.gks-root .text-bar.gks-summary-val > section:last-of-type span:last-of-type {
+  font-weight: normal;
+}
+.gks-root .ui-slider {
+  margin-bottom: 3rem;
+}
+
+/*# sourceMappingURL=app.css.map */
