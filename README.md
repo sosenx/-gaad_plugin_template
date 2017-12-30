@@ -5,3 +5,10 @@
 3. znajdź i zamien namespace na wybrany 
 4. zmienic nazwe projektu w package.json
 5. zmienić nagłówek plugina w głównym pliku z pkt 1.
+
+
+# gaad_plugin_template dev
+
+1. npm install
+2. composer install
+3. grunt dev
