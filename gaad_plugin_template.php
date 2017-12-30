@@ -18,8 +18,9 @@ namespace plugins_main_namespace;
 if ( ! defined( 'ABSPATH' ) ) exit;
 ini_set('max_execution_time', 60*10); //10 minutes
 
+define( 'plugins_main_namespace\GAAD_PLUGIN_TEMPLATE_NAMESPACE',       'plugins_main_namespace\\' );
 
-if ( !defined( 'plugins_main_namespace\GAAD_PLUGIN_TEMPLATE_NAMESPACE'))       define( 'plugins_main_namespace\GAAD_PLUGIN_TEMPLATE_NAMESPACE',       'plugins_main_namespace\\' );
+
 if ( !defined( 'WPLANG'))                         		define( 'WPLANG',                       		'pl_PL' );
 if ( !defined( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_ENV'))             define( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_ENV',				'DIST' );
 
@@ -34,13 +35,13 @@ if ( !defined( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_DIR') )   
 if ( !defined( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_URL') )                		define( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_URL',               		WP_PLUGIN_URL . '/' . GAAD_PLUGIN_TEMPLATE_NAME );
 if ( !defined( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_FORCE_FILES_UPDATED') )   define( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_FORCE_FILES_UPDATED',  	true );
 
-
+	is_file( GAAD_PLUGIN_TEMPLATE_AUTOLOAD ) ?  require_once( GAAD_PLUGIN_TEMPLATE_AUTOLOAD ) : false;
 	require_once( 'inc/starter.php' );
-	require_once( 'class/class-wcm-hooks-mng.php' );
-	require_once( 'class/class-wcm-shortcodes.php' );
-	require_once( 'inc/class-wcm-filters.php' );
-	require_once( 'inc/class-wcm-actions.php' );
-	require_once( 'inc/class-wcm-admin-actions.php' );
+	require_once( 'class/class-hooks-mng.php' );
+	require_once( 'class/class-shortcodes.php' );
+	require_once( 'inc/class-filters.php' );
+	require_once( 'inc/class-actions.php' );
+	require_once( 'inc/class-admin-actions.php' );
 	require_once( 'inc/plugin-hooks.php' );
 
 ?>
