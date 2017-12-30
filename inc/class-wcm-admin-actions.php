@@ -7,7 +7,7 @@ namespace plugins_main_namespace;
 *
 */
 
-class wcm_admin_actions{
+class admin_actions{
   
   
   

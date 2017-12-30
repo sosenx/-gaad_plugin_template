@@ -2,7 +2,7 @@
 namespace plugins_main_namespace;
 
 
-class wcm_hooks_mng{
+class hooks_mng{
   
   var $label;
   public $hooks; 

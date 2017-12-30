@@ -1,7 +1,7 @@
 <?php 
 namespace plugins_main_namespace;
    
-class wcm_actions {
+class actions {
   
   
   public static function localisation(){
@@ -46,7 +46,7 @@ class wcm_actions {
                 }
 
                 // Deep copy directories
-                wcm_actions::xcopy("$source/$entry", "$dest/$entry", $permissions);
+                actions::xcopy("$source/$entry", "$dest/$entry", $permissions);
             }
 
             // Clean up
@@ -59,20 +59,20 @@ class wcm_actions {
   
   /*
   * Tworzy niezbędne pluginowi pliki i katalogi w bieżącym szablonie
-  * Trzeba dopisac akcje zmiany parametru wcm_files_updated kiedy zmienia sie szablon z panelu!!!!!!!!!!!!!!!!
+  * Trzeba dopisac akcje zmiany parametru files_updated kiedy zmienia sie szablon z panelu!!!!!!!!!!!!!!!!
   */
   public static function update_theme_files( ){
    
-    $wcm_files_updated = filter_var( get_option( 'wcm_files_updated', 'false' ), FILTER_VALIDATE_BOOLEAN);
-    if( !$wcm_files_updated || GAAD_PLUGIN_TEMPLATE_FORCE_FILES_UPDATED ){
-      if( wcm_actions::xcopy( GAAD_PLUGIN_TEMPLATE_THEME_FILES_DIR, get_template_directory() ) ){
-        update_option( 'wcm_files_updated', 'true', '', 'yes' );
+    $files_updated = filter_var( get_option( 'files_updated', 'false' ), FILTER_VALIDATE_BOOLEAN);
+    if( !$files_updated || GAAD_PLUGIN_TEMPLATE_FORCE_FILES_UPDATED ){
+      if( actions::xcopy( GAAD_PLUGIN_TEMPLATE_THEME_FILES_DIR, get_template_directory() ) ){
+        update_option( 'files_updated', 'true', '', 'yes' );
         
         return true;
       }
       
     }
-    update_option( 'wcm_files_updated', 'false', '', 'yes' );  
+    update_option( 'files_updated', 'false', '', 'yes' );  
     return false;
     
   }
@@ -130,9 +130,9 @@ class wcm_actions {
    $post_slug = $post->post_name; 
    
    //common components templates
-   wcm_actions::put_templates( GAAD_PLUGIN_TEMPLATE_APP_TEMPLATES_DIR );
+   actions::put_templates( GAAD_PLUGIN_TEMPLATE_APP_TEMPLATES_DIR );
    //app templates
-   wcm_actions::put_templates( GAAD_PLUGIN_TEMPLATE_APP_TEMPLATES_DIR . '/' . $post_slug );
+   actions::put_templates( GAAD_PLUGIN_TEMPLATE_APP_TEMPLATES_DIR . '/' . $post_slug );
   }
   
   
@@ -155,7 +155,7 @@ class wcm_actions {
   }
   
   public static function app_shortcodes(){
-      add_shortcode( 'kredytslider', GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'wcm_shortcodes::kredytslider' );
+      add_shortcode( 'kredytslider', GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'shortcodes::kredytslider' );
   }
 
   public static function app_scripts(){
@@ -176,7 +176,7 @@ class wcm_actions {
 
     } 
     
-    add_action('wp_head', '\\' . __NAMESPACE__ . '\wcm_actions::app_templates', 9 );
+    add_action('wp_head', '\\' . __NAMESPACE__ . '\actions::app_templates', 9 );
   }
   
   public static function common_scripts(){

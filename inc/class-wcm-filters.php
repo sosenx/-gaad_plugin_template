@@ -2,7 +2,7 @@
 namespace plugins_main_namespace;
 
 
-class wcm_filters {
+class filters {
   
   
   public static function woocommerce_cart_item_thumbnail( $image, $cart_item, $cart_item_key) {

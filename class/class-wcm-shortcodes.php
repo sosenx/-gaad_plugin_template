@@ -2,7 +2,7 @@
 namespace plugins_main_namespace;
 
 
-class wcm_shortcodes {
+class shortcodes {
 
 	public static function kredytslider( $atts, $content = "" ) {
 		$defaults = array( 
