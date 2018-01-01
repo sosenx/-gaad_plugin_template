@@ -1,0 +1,1 @@
+<div><?php echo "kurwa"; ?></div>

@@ -1,1 +1,1 @@
-test-comp3
+var test1  = 'comp3';

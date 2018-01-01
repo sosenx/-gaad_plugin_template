@@ -106,7 +106,7 @@ class actions {
   /*
   * Puts app templates as a html at the top
   */
-  public static function put_templates( $dir ){ return true;
+  public static function put_templates( $dir ){ 
     global $post;
     $tpl_dir = opendir( $dir = str_replace( '\\', '/', $dir ) );
     $post_slug = $post->post_name; 
@@ -179,7 +179,7 @@ class actions {
         //common components templates
          actions::put_templates(  GAAD_PLUGIN_TEMPLATE_APP_TEMPLATES_DIR );
          
-         if ( !is_dir( GAAD_PLUGIN_TEMPLATE_APP_TEMPLATES_DIR . '/' . $post_slug ) ) {
+         if ( is_dir( GAAD_PLUGIN_TEMPLATE_APP_TEMPLATES_DIR . '/' . $post_slug ) ) {
            actions::put_templates( GAAD_PLUGIN_TEMPLATE_APP_TEMPLATES_DIR . '/' . $post_slug );
          }
       }
