@@ -31,6 +31,13 @@ if ( !defined( 'WPLANG'))
 if ( !defined( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_ENV'))
 	define( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_ENV', 'DEV' );
 
+if ( !defined( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_SHORTCODE'))
+	/*
+	* Application lauching shorcode name
+	* @default namespace name
+	*/
+	define( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_SHORTCODE', GAAD_PLUGIN_TEMPLATE_NAMESPACE );
+
 if ( !defined( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_NAME'))            
 	define( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_NAME', trim(dirname(plugin_basename(__FILE__)), '/') );
 
@@ -63,6 +70,7 @@ if ( !defined( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_FORCE_FILE
 
 	is_file( GAAD_PLUGIN_TEMPLATE_AUTOLOAD ) ?  require_once( GAAD_PLUGIN_TEMPLATE_AUTOLOAD ) : false;
 	require_once( 'inc/starter.php' );
+	require_once( 'inc/class-json-data.php' );
 	require_once( 'class/class-hooks-mng.php' );
 	require_once( 'class/class-shortcodes.php' );
 	require_once( 'inc/class-filters.php' );

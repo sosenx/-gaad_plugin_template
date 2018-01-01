@@ -13,7 +13,7 @@ module.exports = function(grunt) {
               'js/components/test-comp-2.js',             
               'js/components/test-comp-1.js',             
               'js/components/test-comp-3.js',             
-              'js/app.js'
+              'js/plugin-app.js'
             ], 
         },
       },
@@ -24,7 +24,10 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src: 'dist/js/*.js',
+        src: [
+          'dist/js/*.js',
+          '!dist/js/app.min.js'
+        ],
         dest: 'dist/js/app.min.js'
       }
     },

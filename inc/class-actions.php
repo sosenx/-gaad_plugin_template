@@ -117,11 +117,10 @@ class actions {
       $id = basename( $dir ) . '-' . empty( $id ) ? $f : $id[ 1 ];
      
       $template = $dir . '/'.$f;      
-      if( is_file( $template ) ){
-        $template_id = $post_slug . '-' . str_replace( '-php', '', sanitize_title( $id ) );
+      if( is_file( $template ) && $f !== 'router.html' ){
+        $template_id = 'template-' . basename(GAAD_PLUGIN_TEMPLATE_NAMESPACE) . '-' . str_replace( '-php', '', sanitize_title( $id ) );
         ?><script type="template/javascript" id="<?php echo $template_id; ?>"><?php require_once( $template ); ?></script><?php
-      }
-      
+      }      
     }
   }
 
@@ -172,10 +171,10 @@ class actions {
   * Generates javascript/template for common components
   */
   public static function app_templates(){
-   global $post;   
-   $post_slug = $post->post_name; 
+   global $post;    
    
       if ( is_object( $post)) {
+       $post_slug = $post->post_name; 
         //common components templates
          actions::put_templates(  GAAD_PLUGIN_TEMPLATE_APP_TEMPLATES_DIR );
          
@@ -185,6 +184,11 @@ class actions {
       }
   }
   
+
+  public static function app_data_src(){
+    $json_data = new json_data();
+    ?><script id="<?php echo basename(constant( 'plugins_main_namespace\GAAD_PLUGIN_TEMPLATE_NAMESPACE' )); ?>-json-data" type="application/javascript"><?php $json_data->draw(); ?></script><?php    
+  }
   
   public static function common_styles(){
     global $post;
@@ -203,8 +207,17 @@ class actions {
   }
   
   public static function app_shortcodes(){
-      add_shortcode( 'kredytslider', GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'shortcodes::kredytslider' );
+    $namespace = basename( constant( 'plugins_main_namespace\GAAD_PLUGIN_TEMPLATE_NAMESPACE' ) );
+    $shortcode = basename( constant( 'plugins_main_namespace\GAAD_PLUGIN_TEMPLATE_SHORTCODE' ) );
+    if ( method_exists( $namespace . '\shortcodes', $shortcode ) ) {
+      add_shortcode( $shortcode, $namespace . '\shortcodes::' . $shortcode );
+    } 
+    else {      
+      add_shortcode( $shortcode, $namespace . '\shortcodes::no_main_shortcode_error' );
+    }      
   }
+
+//method_exists( $namespace . '\shortcodes', 'no_main_shortcode_error' )
 
   public static function app_scripts(){
     global $post;
@@ -215,7 +228,10 @@ class actions {
      // wp_enqueue_script( 'jquery', GAAD_PLUGIN_TEMPLATE_URL . '/dist/js/app.min.js', array( 'jquery' ), false, true );  
 
     if(  GAAD_PLUGIN_TEMPLATE_ENV === 'DEV' ){
-    add_action('wp_head', '\\' . GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'actions::app_components', 9 );
+      add_action('wp_head', '\\' . GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'actions::app_components', 9 );
+      wp_enqueue_script( __NAMESPACE__ . '-app-dev-js', GAAD_PLUGIN_TEMPLATE_URL . '/js/plugin-app.js', 
+        array( 'vue-js', 'vue-router-js', 'bootstrap-vue-js' ),
+         false, true );
       }
     
     if(  GAAD_PLUGIN_TEMPLATE_ENV === 'DIST' ){
@@ -225,6 +241,7 @@ class actions {
     } 
     
     add_action('wp_head', '\\' . __NAMESPACE__ . '\actions::app_templates', 9 );
+    add_action('wp_head', '\\' . __NAMESPACE__ . '\actions::app_data_src', 8 );
   }
   
   public static function common_scripts(){
@@ -309,7 +326,7 @@ class actions {
   
   
   
-  public function _constructor(){
+  public function __construct(){
     
     return $this;
   }
