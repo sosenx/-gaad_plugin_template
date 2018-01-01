@@ -193,19 +193,35 @@ class actions {
   * Skrypty główne wczytywane na każdej posdtronie
   */
   public static function core_scripts(){
-    
-    wp_enqueue_script( 'tether-js', GAAD_PLUGIN_TEMPLATE_URL . '/node_modules/tether/dist/js/tether.min.js', false, false, null );
-    wp_enqueue_script( 'vue-js', 'https://unpkg.com/vue@2.4.2/dist/vue.js', false, false, null );
-    wp_enqueue_script( 'vue-router-js', 'https://unpkg.com/vue-router/dist/vue-router.js', array( 'vue-js' ), false, null );
-    wp_enqueue_script( 'vue-x-js', 'https://unpkg.com/vuex', array( 'vue-js' ), false, null );
-    wp_enqueue_script( 'bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js', array( 'tether-js', 'jquery' ), false, null );
-   // wp_enqueue_script( 'jquery-ui-js', GAAD_PLUGIN_TEMPLATE_URL . '/vendor/jquery-ui-1.12.1.custom/jquery-ui.js#defer', array( 'jquery' ), false, null );
-   // wp_enqueue_script( 'jquery-scroll-to-js', GAAD_PLUGIN_TEMPLATE_URL . '/vendor/jquery.scrollTo/jquery.scrollTo.min.js#defer', array( 'jquery' ), false, null );
-    
-    //wp_enqueue_script( 'tinymce-js', GAAD_PLUGIN_TEMPLATE_URL . '/vendor/tinymce/tinymce.min.js?apiKey=13pwfa6nx81qfgrzdpr67td5atfu38w6mv5dfh81tja7wl69', false, false, null );
-    
-    
-    
+    /*
+    * Add core scripts to equeue to core table
+    * Table index is a slug. Order of args is the same as in wp_enqueue_script function.
+    */
+    $core = array(
+       'tether-js' => array( GAAD_PLUGIN_TEMPLATE_URL . '/node_modules/tether/dist/js/tether.min.js', false, false, null ),
+       'vue-js' => array( 'https://unpkg.com/vue@2.4.2/dist/vue.js', false, false, null  ), 
+       //'vuetify-js' => array( GAAD_PLUGIN_TEMPLATE_URL . '/node_modules/vuetify/dist/vuetify.min.js', false, false, null ),
+       'vue-router-js' => array( 'https://unpkg.com/vue-router/dist/vue-router.js', array( 'vue-js' ), false, null ),
+       'vue-x-js' => array( 'https://unpkg.com/vuex', array( 'vue-js' ), false, null ),
+       'bootstrap-js' => array( 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js', array( 'tether-js', 'jquery' ), false, null ),
+       'bootstrap-vue-js' => array( GAAD_PLUGIN_TEMPLATE_URL . '/node_modules/bootstrap-vue/dist/bootstrap-vue.min.js', array( 'vue-js' ), false, null )
+       );
+
+    /*
+    * Force load core scripts from own serwer
+    */
+    if ( !GAAD_PLUGIN_TEMPLATE_CORE_SCRIPTS_CDN_USE ) {
+      $core[ 'vue-js' ][0] = GAAD_PLUGIN_TEMPLATE_URL . '/node_modules/vue/dist/vue.min.js';
+      $core[ 'vue-router-js' ][0] = GAAD_PLUGIN_TEMPLATE_URL . '/node_modules/vue-router/dist/vue-router.min.js';
+      $core[ 'vue-x-js' ][0] = GAAD_PLUGIN_TEMPLATE_URL . '/node_modules/vuex/dist/vuex.min.js';
+      $core[ 'bootstrap-js' ][0] = GAAD_PLUGIN_TEMPLATE_URL . '/node_modules/bootstrap/dist/js/bootstrap.min.js';
+    }
+
+    foreach ($core as $lib => $data) {
+      if ( !wp_script_is( $lib ) ) {
+        wp_enqueue_script( $lib, $data[0], $data[1], $data[2], $data[3] );
+      }      
+    }
   }
     
   
@@ -213,13 +229,32 @@ class actions {
   * Style główne wczytywane na każdej posdtronie
   */
   public static function core_styles(){
-    
-    wp_enqueue_style( 'bootstrap-css', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css', false, false);
-    wp_enqueue_style( 'tether-css', GAAD_PLUGIN_TEMPLATE_URL . '/node_modules/tether/dist/css/tether.min.css', false, false);
-    //wp_enqueue_style( 'fonts-css', GAAD_PLUGIN_TEMPLATE_URL . '/css/fonts.css', false, false);
-    
-    
-    
+    /*
+    * Add styles to equeue to core table
+    * Table index is a slug. Order of args is the same as in wp_enqueue_style function.
+    */
+     $core = array(
+       'tether-css' => array( GAAD_PLUGIN_TEMPLATE_URL . '/node_modules/tether/dist/css/tether.min.css', false, false ),
+       'bootstrap-css' => array( 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css', false, false ),
+       //'vuetify-css' => array( GAAD_PLUGIN_TEMPLATE_URL . '/node_modules/vuetify/dist/vuetify.min.css', false, false ),
+      // 'vuetify-material-icons-css' => array( 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons', false, false )
+       'bootstrap-vue-css' => array( '//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css', false, false )
+     );
+
+    /*
+    * Force load core scripts from own serwer
+    */
+    if ( !GAAD_PLUGIN_TEMPLATE_CORE_SCRIPTS_CDN_USE ) {
+       $core[ 'bootstrap-css' ][0] = GAAD_PLUGIN_TEMPLATE_URL . '/node_modules/bootstrap/dist/css/bootstrap.min.css';
+       $core[ 'bootstrap-vue-css' ][0] = GAAD_PLUGIN_TEMPLATE_URL . '/node_modules/bootstrap-vue/dist/bootstrap-vue.min.css';
+
+    }
+
+    foreach ($core as $lib => $data) {
+      if ( !wp_style_is( $lib ) ) {
+        wp_enqueue_style( $lib, $data[0], $data[1], $data[2] );
+      }      
+    }    
     
   }
   

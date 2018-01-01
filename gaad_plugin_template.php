@@ -20,8 +20,15 @@ ini_set('max_execution_time', 60*10); //10 minutes
 
 define( 'plugins_main_namespace\GAAD_PLUGIN_TEMPLATE_NAMESPACE',       'plugins_main_namespace\\' );
 
+if ( !defined( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_CORE_SCRIPTS_CDN_USE'))
+	define( 
+		GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_CORE_SCRIPTS_CDN_USE', true );
+
+
 
 if ( !defined( 'WPLANG'))                         		define( 'WPLANG',                       		'pl_PL' );
+
+
 if ( !defined( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_ENV'))             define( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_ENV',				'DIST' );
 
 if ( !defined( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_NAME'))            define( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_NAME',              		trim(dirname(plugin_basename(__FILE__)), '/') );
