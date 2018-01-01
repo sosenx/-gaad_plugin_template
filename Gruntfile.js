@@ -9,13 +9,17 @@ module.exports = function(grunt) {
       
       basic_and_extras: {
         files: {         
-          'dist/js/app.js': [             
+          'dist/js/app.js': [
+              'js/components/test-comp-2.js',             
+              'js/components/test-comp-1.js',             
+              'js/components/test-comp-3.js',             
               'js/app.js'
             ], 
         },
       },
     },
-     uglify: {
+    
+    uglify: {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },

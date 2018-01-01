@@ -102,7 +102,10 @@ class actions {
       }      
     }    
   }
-  
+
+  /*
+  * Puts app templates as a html at the top
+  */
   public static function put_templates( $dir ){ return true;
     global $post;
     $tpl_dir = opendir( $dir = str_replace( '\\', '/', $dir ) );
@@ -121,18 +124,65 @@ class actions {
       
     }
   }
-  
+
+  /*
+  * Puts app components as scripts at the top
+  */
+  public static function put_components( $dir ){ 
+    global $post;
+    $tpl_dir = opendir( $dir = str_replace( '\\', '/', $dir ) );
+    $post_slug = $post->post_name; 
+
+    while ( $f = readdir($tpl_dir) ){
+      $id = array();
+      preg_match('/(.*)[\.]{1}.*$/', $f, $id);
+      $id = basename( $dir ) . '-' . empty( $id ) ? $f : $id[ 1 ];
+     
+      $component = $dir . '/'.$f;      
+      if( is_file( $component ) ){
+        $component = filters::dir_to_url( $component );
+        $template_id = $post_slug . '-' . str_replace( '-php', '', sanitize_title( $id ) );
+        ?><script type="application/javascript" src="<?php echo $component; ?>" id="<?php echo $template_id; ?>"></script><?php
+      }      
+    }
+  }
+  //
+
+
+  /**
+  * Generates javascript/template for common components
+  */
+  public static function app_components(){
+   global $post; 
+   if ( is_object( $post ) ) {
+      $post_slug = $post->post_name; 
+   
+      //common components templates
+      actions::put_components( GAAD_PLUGIN_TEMPLATE_APP_COMPONENTS_DIR );
+
+      if ( is_dir( GAAD_PLUGIN_TEMPLATE_APP_COMPONENTS_DIR . '/' . $post_slug ) ) {
+        //app templates
+        actions::put_components( GAAD_PLUGIN_TEMPLATE_APP_COMPONENTS_DIR . '/' . $post_slug );
+      }
+   }      
+ }
+
+
   /**
   * Generates javascript/template for common components
   */
   public static function app_templates(){
-   global $post;
+   global $post;   
    $post_slug = $post->post_name; 
    
-   //common components templates
-   actions::put_templates( GAAD_PLUGIN_TEMPLATE_APP_TEMPLATES_DIR );
-   //app templates
-   actions::put_templates( GAAD_PLUGIN_TEMPLATE_APP_TEMPLATES_DIR . '/' . $post_slug );
+      if ( is_object( $post)) {
+        //common components templates
+         actions::put_templates(  GAAD_PLUGIN_TEMPLATE_APP_TEMPLATES_DIR );
+         
+         if ( !is_dir( GAAD_PLUGIN_TEMPLATE_APP_TEMPLATES_DIR . '/' . $post_slug ) ) {
+           actions::put_templates( GAAD_PLUGIN_TEMPLATE_APP_TEMPLATES_DIR . '/' . $post_slug );
+         }
+      }
   }
   
   
@@ -149,9 +199,7 @@ class actions {
     
     if(  GAAD_PLUGIN_TEMPLATE_ENV === 'DIST' ){
       wp_enqueue_style( 'gkredytslider-css', GAAD_PLUGIN_TEMPLATE_URL . '/dist/css/app.min.css', false, false);
-    }
-     
-    
+    }        
   }
   
   public static function app_shortcodes(){
@@ -167,7 +215,7 @@ class actions {
      // wp_enqueue_script( 'jquery', GAAD_PLUGIN_TEMPLATE_URL . '/dist/js/app.min.js', array( 'jquery' ), false, true );  
 
     if(  GAAD_PLUGIN_TEMPLATE_ENV === 'DEV' ){
-   
+    add_action('wp_head', '\\' . GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'actions::app_components', 9 );
       }
     
     if(  GAAD_PLUGIN_TEMPLATE_ENV === 'DIST' ){
@@ -203,6 +251,7 @@ class actions {
        //'vuetify-js' => array( GAAD_PLUGIN_TEMPLATE_URL . '/node_modules/vuetify/dist/vuetify.min.js', false, false, null ),
        'vue-router-js' => array( 'https://unpkg.com/vue-router/dist/vue-router.js', array( 'vue-js' ), false, null ),
        'vue-x-js' => array( 'https://unpkg.com/vuex', array( 'vue-js' ), false, null ),
+       'vue-masonry-js' => array( GAAD_PLUGIN_TEMPLATE_URL . '/node_modules/vue-masonry/dist/vue-masonry-plugin.js', array( 'vue-js' ), false, null ),
        'bootstrap-js' => array( 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js', array( 'tether-js', 'jquery' ), false, null ),
        'bootstrap-vue-js' => array( GAAD_PLUGIN_TEMPLATE_URL . '/node_modules/bootstrap-vue/dist/bootstrap-vue.min.js', array( 'vue-js' ), false, null )
        );
