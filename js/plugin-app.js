@@ -33,7 +33,7 @@
 	// whole app router-aware.
 	const app = new Vue({
 	  router
-	}).$mount('#app');
+	}).$mount('#app-plugins_main_namespace');
 // Now the app has started!
 
 })(window, Vue, VueRouter);	

@@ -36,7 +36,7 @@ if ( !defined( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_SHORTCODE'
 	* Application lauching shorcode name
 	* @default namespace name
 	*/
-	define( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_SHORTCODE', GAAD_PLUGIN_TEMPLATE_NAMESPACE );
+	define( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_SHORTCODE', 'plugins_main_namespace' );
 
 if ( !defined( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_NAME'))            
 	define( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_NAME', trim(dirname(plugin_basename(__FILE__)), '/') );
