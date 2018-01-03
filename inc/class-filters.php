@@ -5,9 +5,9 @@ namespace plugins_main_namespace;
 class filters {
   
   public static function dir_to_url( $dir ){
-    $r = explode( 'wp-content/' , $dir );
+    $r = explode( 'wp-content' , $dir );
     $r =  dirname( WP_PLUGIN_URL ) . '/' . $r[1];
-    return $r;
+    return str_replace( array( '/\\', '\\', '//', 'http:/', 'https:/'), array( '/', '/', '/', 'http://', 'https://' ), $r );
   }
   
   public static function woocommerce_cart_item_thumbnail( $image, $cart_item, $cart_item_key) {

@@ -1,17 +1,9 @@
-var test1  = 'comp1';
-var test1  = 'comp2';
 (function(window, Vue, VueRouter){
-
-
-	var Base = { template: '#template-plugins_main_namespace-main' };
-	var Foo = { template: '<div>foo</div>' };
-	var Bar = { template: '<div>bar</div>' };
-
 	
 	var routes = [
-	  { path: '/', component: Base },
-	  { path: '/foo', component: Foo },
-	  { path: '/bar', component: Bar }
+	  { path: '/', component: my_component_1___plugins_main_namespace },
+	  { path: '/my-component-2', component: my_component_2___plugins_main_namespace },
+	  { path: '/my-component-3', component: my_component_3___plugins_main_namespace }
 	];
 
 

@@ -7,13 +7,47 @@ module.exports = function(grunt) {
     
     concat: {
       
-      basic_and_extras: {
+      app: {
         files: {         
           'dist/js/app.js': [
-              'js/components/test-comp-2.js',             
-              'js/components/test-comp-1.js',             
-              'js/components/test-comp-3.js',             
-              'js/plugin-app.js'
+              'js/components/*.js',             
+              'js/app.js'
+            ], 
+        },
+      },
+
+      modules: {
+        files: {         
+          'dist/js/modules.min.js': [
+              'node_modules/tether/dist/js/tether.min.js',
+              'node_modules/bootstrap-vue/dist/bootstrap-vue.min.js'
+            ], 
+        },
+      },
+
+      modules_full: {
+        files: {         
+          'dist/js/modules.js': [
+              'node_modules/tether/dist/js/tether.min.js',
+              'node_modules/vue/dist/vue.min.js',
+              'node_modules/bootstrap-vue/dist/bootstrap-vue.min.js',
+              'node_modules/vuex/dist/vuex.min.js'
+            ], 
+        },
+      },
+
+      components: {
+        files: {         
+          'sass/app-components.scss': [              
+              'sass/components/*.scss'
+            ], 
+        },
+      },
+
+      modules_css: {
+        files: {         
+          'css/modules.min.css': [
+              'node_modules/tether/dist/css/tether.min.css'             
             ], 
         },
       },
@@ -26,7 +60,8 @@ module.exports = function(grunt) {
       build: {
         src: [
           'dist/js/*.js',
-          '!dist/js/app.min.js'
+          '!dist/js/app.min.js',
+          '!dist/js/modules.js'
         ],
         dest: 'dist/js/app.min.js'
       }
@@ -39,17 +74,28 @@ module.exports = function(grunt) {
           style: 'expanded' // we don't want to compress it
         },
         files: {
-          'css/app.css': 'sass/*.scss', // this is our main scss file
-          
+          'css/app.css': 'sass/base-app.scss', // this is our main scss file
+          'css/app-components.css': 'sass/app-components.scss'
         }
+      },
+      dev : {
+        options: {
+         // compass: true, // enable the combass lib, more on this later
+          style: 'expanded' // we don't want to compress it
+        },
+        files: {
+          'css/components/compon-1.css': 'sass/components/compon-1.scss',
+          'css/components/compon-2.css': 'sass/components/compon-2.scss'
+
+        }
+
       }
     },
 
     cssmin: { // minifying css task
       dist: {
         files: {
-          'dist/css/app.min.css': 'css/*.css'//
-         // 'dist/css/header-generic.min.css': 'dist/css/header-generic.css'
+          'dist/css/app.min.css': 'css/*.css'          
         }
       }
     },
@@ -92,7 +138,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');  
   //grunt.loadNpmTasks('grunt-contrib-compress');
   // Default task(s).
-  grunt.registerTask('default', [ 'sass', 'concat', 'uglify', /**/'cssmin' ]);
-  grunt.registerTask('dev', [ 'browserSync', 'watch', 'sass' ]);
+  
+  grunt.registerTask('dist', [ 'sass:dist', 'concat:app', 'concat:components', 'concat:modules', 'concat:modules_css', 'uglify', 'cssmin' ]);
+  grunt.registerTask('dev', [ /*'browserSync', 'watch',*/ 'sass:dev' ]);
 
 };
