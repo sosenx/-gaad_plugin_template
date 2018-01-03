@@ -1,25 +1,20 @@
 (function(window, Vue, VueRouter){
 	
-	var routes = [
-	  { path: '/', component: my_component_1___plugins_main_namespace },
-	  { path: '/my-component-2', component: my_component_2___plugins_main_namespace },
-	  { path: '/my-component-3', component: my_component_3___plugins_main_namespace }
-	];
 
 
 	var store = new Vuex.Store({
 	  state: {
-	    count: 0
+	    model: window['plugins_main_namespace' + '__app_model']
 	  },
-	  mutations: {
-	    increment: function(state) {
-	      state.count++;
-	    }
-	  }
+	  mutations: { }
 	});
 
 	var router = new VueRouter({
-	  routes : routes
+	  routes : [
+		  { path: '/', component: my_component_1___plugins_main_namespace },
+		  { path: '/my-component-2', component: my_component_2___plugins_main_namespace },
+		  { path: '/my-component-3', component: my_component_3___plugins_main_namespace }
+		]
 	});
 
 	

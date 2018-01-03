@@ -72,8 +72,11 @@ if ( !defined( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_FORCE_FILE
 	define( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_FORCE_FILES_UPDATED', true );
 
 	is_file( GAAD_PLUGIN_TEMPLATE_AUTOLOAD ) ?  require_once( GAAD_PLUGIN_TEMPLATE_AUTOLOAD ) : false;
-	require_once( 'inc/starter.php' );
+	
+	
 	require_once( 'inc/class-json-data.php' );
+	require_once( 'inc/class-rest.php' );	
+	require_once( 'inc/register-routers.php' );
 	require_once( 'class/class-hooks-mng.php' );
 	require_once( 'class/class-shortcodes.php' );
 	require_once( 'inc/class-filters.php' );
@@ -81,4 +84,5 @@ if ( !defined( GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'GAAD_PLUGIN_TEMPLATE_FORCE_FILE
 	require_once( 'inc/class-admin-actions.php' );
 	require_once( 'inc/plugin-hooks.php' );
 
+	
 ?>

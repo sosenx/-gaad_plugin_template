@@ -27,7 +27,7 @@ class json_data {
   }
 
   function draw( $return = false ){
-    $string = 'var '. basename( constant( 'plugins_main_namespace\GAAD_PLUGIN_TEMPLATE_NAMESPACE' ) ) .'__json_data ='. $this->getJson() .';';
+    $string = 'var '. basename( constant( 'plugins_main_namespace\GAAD_PLUGIN_TEMPLATE_NAMESPACE' ) ) .'__app_model ='. $this->getJson() .';';
     if ( !$return ) {
       echo $string;
     }
@@ -37,8 +37,8 @@ class json_data {
 /*
 ta fn pobiera wszystkie niezbedne aplikacji dane
 */
-  function get(){    
-    return array( 'to-jest' => 'test' );
+  function get(){       
+    return json_decode( rest::app_model(), true );
   }
   
   

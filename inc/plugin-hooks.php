@@ -2,7 +2,6 @@
 namespace plugins_main_namespace;
 
 
-
 $core_hooks = new hooks_mng( 'core' ); 
 $core_hooks->add_hook( 'action', 'wp_enqueue_scripts', array(GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'actions::core_scripts', 10, 0, true));
 $core_hooks->add_hook( 'action', 'wp_enqueue_scripts', array(GAAD_PLUGIN_TEMPLATE_NAMESPACE . 'actions::common_scripts', 10, 0, true));
@@ -26,6 +25,8 @@ $core_hooks->add_hook( 'filter', array('clean_url' ), array( GAAD_PLUGIN_TEMPLAT
 //ajax
 //$core_hooks->add_hook( 'action', 'wp_ajax_nopriv_', array('actions::', 10, 0, true));
 //$core_hooks->add_hook( 'action', 'wp_ajax_', array('actions::', 10, 0, true));
+
+
 $core_hooks->apply_hooks();
 
  ?>
