@@ -1,6 +1,7 @@
 (function(window, Vue, VueRouter){
 	
-
+	//escape if no holder on page
+	if ( document.getElementById( 'app-plugins_main_namespace' ) === null ) { return; }
 
 	var store = new Vuex.Store({
 	  state: {
