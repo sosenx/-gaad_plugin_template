@@ -52,6 +52,7 @@ class admin_actions{
   public function admin_styles(){
     
     wp_enqueue_style( 'font-awesomes-css', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', false, false);
+    wp_enqueue_style( 'kamadmin-css', GAAD_KAM_ADMIN_URL . '/css/app.css', false, false);
 
     return $this;
   }

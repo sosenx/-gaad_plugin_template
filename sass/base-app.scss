@@ -1,2 +1,62 @@
 /* CSS Document */
-#base-app{ color : red; }
+.settings__line{
+
+	label{
+		min-width: 100px;
+		width: 15%;
+    	display: inline-block;
+	}
+
+	input, select {
+		min-width: 200px;
+		width: 75%;
+	}
+
+}
+
+.cameras_list{	
+	border-bottom:none;
+	border-collapse: collapse;
+	border:1px solid gray;
+	width : 100%;
+
+	tr{
+
+		th, td {
+			padding: 7px;
+			background-color: gray;
+		}
+
+		th {
+			color: white;
+		}
+
+		td{
+			border-bottom:1px solid gray;
+			border-left:1px solid gray;
+			background-color: initial;
+
+			&:nth-of-type(1){
+				width: 5%;
+				min-width: 50px;
+			}
+
+			&:nth-of-type(2){
+				width: 15%;
+				min-width: 150px;
+			}
+
+			&:nth-of-type(3){
+				width: 80%;
+				min-width: 250px;
+			}
+		}
+
+	}
+
+	tr:nth-of-type( 2n +1 ){
+		td{
+			background-color: #dfdfdf;
+		}
+	}
+}

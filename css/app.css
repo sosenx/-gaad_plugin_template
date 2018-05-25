@@ -1,6 +1,46 @@
 /* CSS Document */
-#base-app {
-  color: red;
+.settings__line label {
+  min-width: 100px;
+  width: 15%;
+  display: inline-block;
+}
+.settings__line input, .settings__line select {
+  min-width: 200px;
+  width: 75%;
+}
+
+.cameras_list {
+  border-bottom: none;
+  border-collapse: collapse;
+  border: 1px solid gray;
+  width: 100%;
+}
+.cameras_list tr th, .cameras_list tr td {
+  padding: 7px;
+  background-color: gray;
+}
+.cameras_list tr th {
+  color: white;
+}
+.cameras_list tr td {
+  border-bottom: 1px solid gray;
+  border-left: 1px solid gray;
+  background-color: initial;
+}
+.cameras_list tr td:nth-of-type(1) {
+  width: 5%;
+  min-width: 50px;
+}
+.cameras_list tr td:nth-of-type(2) {
+  width: 15%;
+  min-width: 150px;
+}
+.cameras_list tr td:nth-of-type(3) {
+  width: 80%;
+  min-width: 250px;
+}
+.cameras_list tr:nth-of-type(2n +1) td {
+  background-color: #dfdfdf;
 }
 
 /*# sourceMappingURL=app.css.map */

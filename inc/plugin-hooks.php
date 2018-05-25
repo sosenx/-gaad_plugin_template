@@ -37,7 +37,11 @@ $core_hooks->add_hook( 'filter', array('clean_url' ), array( GAAD_KAM_ADMIN_NAME
 
 $kamadmin = new gaad_kam_admin();
 $core_hooks->add_hook( 'action', array('init' ), array( GAAD_KAM_ADMIN_NAMESPACE . 'gaad_kam_admin::add_user_types', 11, 1) );
-$core_hooks->add_hook( 'action', array('init' ), array( GAAD_KAM_ADMIN_NAMESPACE . 'gaad_kam_admin::add_post_types', 10, 1) );
+$core_hooks->add_hook( 'action', array('init' ), array( GAAD_KAM_ADMIN_NAMESPACE . 'gaad_kam_admin::add_post_types', 5, 1) );
+$core_hooks->add_hook( 'action', array('init' ), array( GAAD_KAM_ADMIN_NAMESPACE . 'gaad_kam_admin::add_caps', 5, 1) );
+$core_hooks->add_hook( 'action', array('pre_get_posts' ), array( GAAD_KAM_ADMIN_NAMESPACE . 'gaad_kam_admin::filter_cameras', 5, 1) );
+
+
 $core_hooks->add_hook( 'action', array('add_meta_boxes' ), array( GAAD_KAM_ADMIN_NAMESPACE . 'gaad_kam_admin::add_post_meta_box', 10, 1) );
 $core_hooks->add_hook( 'action', array('save_post' ), array( GAAD_KAM_ADMIN_NAMESPACE . 'gaad_kam_admin::save_post_meta', 10, 3) );
 

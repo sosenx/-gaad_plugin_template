@@ -11,6 +11,62 @@ class gaad_kam_admin{
 
 	}
 
+	public static function add_caps(){
+      global $wp_roles;
+
+      if ( ! class_exists( '\WP_Roles' ) ) {
+        return;
+      }
+
+      if ( ! isset( $wp_roles ) ) {
+        $wp_roles = new \WP_Roles();
+      }
+
+      $capabilities = gaad_kam_admin::set_admin_caps();
+
+
+      foreach ( $capabilities as $cap_group ) {
+        foreach ( $cap_group as $cap ) {
+          //$wp_roles->add_cap( 'cam_user', $cap );
+          $wp_roles->add_cap( 'administrator', $cap );
+        }
+      }
+    }
+
+    public static function set_admin_caps() {
+      $capabilities = array();
+
+      $capability_types = array( 'camera' );
+
+      foreach ( $capability_types as $capability_type ) {
+
+        $capabilities[ $capability_type ] = array(
+          // Post type
+          "edit_{$capability_type}",
+          "read_{$capability_type}",
+          "delete_{$capability_type}",
+          "edit_{$capability_type}s",
+          "edit_others_{$capability_type}s",
+          "publish_{$capability_type}s",
+          "read_private_{$capability_type}s",
+          "delete_{$capability_type}s",
+          "delete_private_{$capability_type}s",
+          "delete_published_{$capability_type}s",
+          "delete_others_{$capability_type}s",
+          "edit_private_{$capability_type}s",
+          "edit_published_{$capability_type}s",
+
+          // Terms
+          // "manage_{$capability_type}_terms",
+          // "edit_{$capability_type}_terms",
+          // "delete_{$capability_type}_terms",
+          // "assign_{$capability_type}_terms",
+
+        );
+      }
+
+      return $capabilities;
+    }
 
 	/**
 	 * Adds custom post types
@@ -18,59 +74,54 @@ class gaad_kam_admin{
 	 */
 	public static function add_post_types(){
 
-		$labels = array(
-			'name'                  => _x( 'Cameras', 'Post Type General Name', 'kamadmin' ),
-			'singular_name'         => _x( 'Camera', 'Post Type Singular Name', 'kamadmin' ),
-			'menu_name'             => __( 'Cameras', 'kamadmin' ),
-			'name_admin_bar'        => __( 'Camera', 'kamadmin' ),
-			'archives'              => __( 'Item Archives', 'kamadmin' ),
-			'attributes'            => __( 'Item Attributes', 'kamadmin' ),
-			'parent_item_colon'     => __( 'Parent Item:', 'kamadmin' ),
-			'all_items'             => __( 'All Items', 'kamadmin' ),
-			'add_new_item'          => __( 'Add New Item', 'kamadmin' ),
-			'add_new'               => __( 'Add new camera', 'kamadmin' ),
-			'new_item'              => __( 'New camera', 'kamadmin' ),
-			'edit_item'             => __( 'Edit camera', 'kamadmin' ),
-			'update_item'           => __( 'Update camera', 'kamadmin' ),
-			'view_item'             => __( 'View camera', 'kamadmin' ),
-			'view_items'            => __( 'View cameras', 'kamadmin' ),
-			'search_items'          => __( 'Search cameras', 'kamadmin' ),
-			'not_found'             => __( 'Not found', 'kamadmin' ),
-			'not_found_in_trash'    => __( 'Not found in Trash', 'kamadmin' ),
-			'featured_image'        => __( 'Featured Image', 'kamadmin' ),
-			'set_featured_image'    => __( 'Set featured image', 'kamadmin' ),
-			'remove_featured_image' => __( 'Remove featured image', 'kamadmin' ),
-			'use_featured_image'    => __( 'Use as featured image', 'kamadmin' ),
-			'insert_into_item'      => __( 'Insert into item', 'kamadmin' ),
-			'uploaded_to_this_item' => __( 'Uploaded to this item', 'kamadmin' ),
-			'items_list'            => __( 'Items list', 'kamadmin' ),
-			'items_list_navigation' => __( 'Items list navigation', 'kamadmin' ),
-			'filter_items_list'     => __( 'Filter items list', 'kamadmin' ),
-		);
-		$args = array(
-			'label'                 => __( 'Camera', 'kamadmin' ),
-			'labels'                => $labels,
-			'supports'              => array( 'title' ),
-			'hierarchical'          => false,
-			'public'                => true,
-			'show_ui'               => true,
-			'show_in_menu'          => true,
-			'menu_position'         => 80,
-			'show_in_admin_bar'     => true,
-			'show_in_nav_menus'     => true,
-			'can_export'            => false,
-			'has_archive'           => false,
-			'exclude_from_search'   => true,
-			'publicly_queryable'    => true,
-			'capability_type'       => 'page',
-			'show_in_rest'          => true,
-			'rest_base'             => 'camera',
-		);
-		register_post_type( 'camera', $args );
-
-
 		
-//add_action( 'add_meta_boxes_food', 'camera_add_meta_boxes' );
+
+		\register_post_type( 'camera',
+		  \apply_filters( 'wpse64458_callb_post_type_camera',
+		    array(
+		      'labels'              => array(
+		        'name'                  => __( 'Cameras', 'kamadmin' ),
+		        'singular_name'         => __( 'Camera', 'kamadmin' ),
+		        'all_items'             => __( 'All Cameras', 'kamadmin' ),
+		        'menu_name'             => _x( 'Cameras', 'Admin menu name', 'kamadmin' ),
+		        'add_new'               => __( 'Add New', 'kamadmin' ),
+		        'add_new_item'          => __( 'Add new camera', 'kamadmin' ),
+		        'edit'                  => __( 'Edit', 'kamadmin' ),
+		        'edit_item'             => __( 'Edit camera', 'kamadmin' ),
+		        'new_item'              => __( 'New camera', 'kamadmin' ),
+		        'view'                  => __( 'View camera', 'kamadmin' ),
+		        'view_item'             => __( 'View camera', 'kamadmin' ),
+		        'search_items'          => __( 'Search cameras', 'kamadmin' ),
+		        'not_found'             => __( 'No cameras found', 'kamadmin' ),
+		        'not_found_in_trash'    => __( 'No cameras found in trash', 'kamadmin' ),
+		        'parent'                => __( 'Parent camera', 'kamadmin' ),
+		        'featured_image'        => __( 'Camera image', 'kamadmin' ),
+		        'set_featured_image'    => __( 'Set camera image', 'kamadmin' ),
+		        'remove_featured_image' => __( 'Remove camera image', 'kamadmin' ),
+		        'use_featured_image'    => __( 'Use as camera image', 'kamadmin' ),
+		        'insert_into_item'      => __( 'Insert into camera', 'kamadmin' ),
+		        'uploaded_to_this_item' => __( 'Uploaded to this camera', 'kamadmin' ),
+		        'filter_items_list'     => __( 'Filter cameras', 'kamadmin' ),
+		        'items_list_navigation' => __( 'Cameras navigation', 'kamadmin' ),
+		        'items_list'            => __( 'Cameras list', 'kamadmin' ),
+		      ),
+		      'public'              => true,
+		      'show_ui'             => true,
+		      'capability_type'     => array('page','camera'),
+		      'map_meta_cap'        => true,
+		      'menu_icon'          => 'dashicons-groups',
+		      'publicly_queryable'  => true,
+		      'exclude_from_search' => false,
+		      'hierarchical'        => false, // Hierarchical causes memory issues - WP loads all records!
+		      'rewrite'            => array( 'slug' => 'camera' ),
+		      'query_var'           => true,
+		      'supports'            => array( 'title' ),
+		      'has_archive'         => 'cameras',
+		      'show_in_nav_menus'   => true,
+		      'show_in_rest'        => true,
+		    )
+		  )
+		);
 	}
 
 
@@ -121,7 +172,7 @@ class gaad_kam_admin{
 
 			array_push( $_rows, array(
 				'ID'   => $camera_ID, 
-				'name' => $cam_name, 
+				'name' => '<a href="'.  \admin_url() .'post.php?post=11&action=edit">'. $cam_name.'</a>', 
 				'url'  => $cam_url 
 			) );
 			
@@ -222,12 +273,12 @@ class gaad_kam_admin{
 		wp_nonce_field(basename(__FILE__), "camera-meta-box-nonce");
 
 		?>
-			<div>
+			<div class="settings__line">
             	<label for="camera-url"><?php echo \__( 'Camera URL', 'kamadmin' ); ?></label>
             	<input name="camera-url" type="text" value="<?php echo $url; ?>">
 			</div>
 
-			<div>
+			<div class="settings__line">
 				<label for="camera-user"><?php echo \__( 'Assigned user', 'kamadmin' ) ?></label>
             	<select name="camera-user">
             		<?php 
@@ -246,6 +297,23 @@ class gaad_kam_admin{
 	}
 
 
+
+	public static function filter_cameras( $query ){
+		if(!is_admin()) return;
+
+		$user = \wp_get_current_user( );
+		$is_cam_user = $user->has_cap( 'cam_user' );
+		if( $is_cam_user ){
+
+
+			$query->set('post_type', 'camera');
+			$query->set('meta_key', 'camera-user');
+        	$query->set('meta_value', $user->ID);
+		}
+
+	}
+
+
 	/**
 	 * Adds custom users for managing cameras
 	 * In case of further plugin devepment (may be handy)
@@ -256,7 +324,9 @@ class gaad_kam_admin{
 		    'cam_user',
 		    __( 'Operator kamery' ),
 		    array(
-		        'read'         => true,  // true allows this capability
+		        'read'         => false,  // true allows this capability
+		        'read_cameras'         => false,  // true allows this capability
+		        'read_camera'         => false,  // true allows this capability
 		        'edit_posts'   => true,
 		    )
 		);
