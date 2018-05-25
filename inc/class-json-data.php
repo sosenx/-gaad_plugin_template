@@ -1,5 +1,5 @@
 <?php 
-namespace plugins_main_namespace;
+namespace kamadmin;
 
 /*
 * 
@@ -27,7 +27,7 @@ class json_data {
   }
 
   function draw( $return = false ){
-    $string = 'var '. basename( constant( 'plugins_main_namespace\GAAD_PLUGIN_TEMPLATE_NAMESPACE' ) ) .'__app_model ='. $this->getJson() .';';
+    $string = 'var '. basename( constant( 'kamadmin\GAAD_KAM_ADMIN_NAMESPACE' ) ) .'__app_model ='. $this->getJson() .';';
     if ( !$return ) {
       echo $string;
     }

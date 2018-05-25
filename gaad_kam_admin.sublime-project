@@ -2,7 +2,7 @@
 	"folders":
 	[
 		{
-			"path": "C:\\xampp7\\htdocs\\gaadcalc\\wp-content\\plugins\\gaad_plugin_template"
+			"path": "C:\\xampp7\\htdocs\\kamadmin\\wp-content\\plugins\\gaad-kam-admin"
 		}
 	],
 	"settings":
@@ -13,7 +13,7 @@
 			"launch_browser": false,
 			"max_depth": 10,
 			"super_globals": true,
-			"url": "http://localhost/gaadcalc/blog-big"
+			"url": "http://localhost/kamadmin/"
 		}
 	}
 }

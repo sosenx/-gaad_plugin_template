@@ -3,7 +3,7 @@ var test1  = 'comp2';
 (function(window, Vue, VueRouter){
 
 
-	var Base = { template: '#template-plugins_main_namespace-main' };
+	var Base = { template: '#template-kamadmin-main' };
 	var Foo = { template: '<div>foo</div>' };
 	var Bar = { template: '<div>bar</div>' };
 
@@ -34,6 +34,6 @@ var test1  = 'comp2';
 	var app = new Vue({
 	  store: store,
 	  router: router
-	}).$mount('#app-plugins_main_namespace');
+	}).$mount('#app-kamadmin');
 
 })(window, Vue, VueRouter);	

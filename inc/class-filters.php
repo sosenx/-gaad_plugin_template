@@ -1,5 +1,5 @@
 <?php 
-namespace plugins_main_namespace;
+namespace kamadmin;
 
 
 class filters {

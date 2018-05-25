@@ -1,5 +1,5 @@
-var my_component_1___plugins_main_namespace = Vue.component('my-component-1', {
-  template: '#template-plugins_main_namespace-my-component-1',
+var my_component_1___kamadmin = Vue.component('my-component-1', {
+  template: '#template-kamadmin-my-component-1',
   data: function() {
     return {      
     }

@@ -1,20 +1,20 @@
 (function(window, Vue, VueRouter){
 	
 	//escape if no holder on page
-	if ( document.getElementById( 'app-plugins_main_namespace' ) === null ) { return; }
+	if ( document.getElementById( 'app-kamadmin' ) === null ) { return; }
 
 	var store = new Vuex.Store({
 	  state: {
-	    model: window['plugins_main_namespace' + '__app_model']
+	    model: window['kamadmin' + '__app_model']
 	  },
 	  mutations: { }
 	});
 
 	var router = new VueRouter({
 	  routes : [
-		  { path: '/', component: my_component_1___plugins_main_namespace },
-		  { path: '/my-component-2', component: my_component_2___plugins_main_namespace },
-		  { path: '/my-component-3', component: my_component_3___plugins_main_namespace }
+		  { path: '/', component: my_component_1___kamadmin },
+		  { path: '/my-component-2', component: my_component_2___kamadmin },
+		  { path: '/my-component-3', component: my_component_3___kamadmin }
 		]
 	});
 
@@ -22,6 +22,6 @@
 	var app = new Vue({
 	  store: store,
 	  router: router
-	}).$mount('#app-plugins_main_namespace');
+	}).$mount('#app-kamadmin');
 
 })(window, Vue, VueRouter);	
