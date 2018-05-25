@@ -61,6 +61,9 @@ if ( !defined( GAAD_KAM_ADMIN_NAMESPACE . 'GAAD_KAM_ADMIN_APP_TEMPLATES_DIR' ) )
 if ( !defined( GAAD_KAM_ADMIN_NAMESPACE . 'GAAD_KAM_ADMIN_APP_COMPONENTS_DIR' ) )
 	define( GAAD_KAM_ADMIN_NAMESPACE . 'GAAD_KAM_ADMIN_APP_COMPONENTS_DIR', GAAD_KAM_ADMIN_DIR . 'js/components' );
 
+if ( !defined( GAAD_KAM_ADMIN_NAMESPACE . 'GAAD_KAM_ADMIN_LANG_DIR' ) )
+	define( GAAD_KAM_ADMIN_NAMESPACE . 'GAAD_KAM_ADMIN_LANG_DIR', GAAD_KAM_ADMIN_DIR . 'languages' );
+
 if ( !defined( GAAD_KAM_ADMIN_NAMESPACE . 'GAAD_KAM_ADMIN_DIR') ) 
 	define( GAAD_KAM_ADMIN_NAMESPACE . 'GAAD_KAM_ADMIN_DIR', GAAD_KAM_ADMIN_DIR . '/' . GAAD_KAM_ADMIN_NAME );
 
@@ -75,8 +78,6 @@ if ( !defined( GAAD_KAM_ADMIN_NAMESPACE . 'GAAD_KAM_ADMIN_FORCE_FILES_UPDATED') 
 	
 	require_once( 'class/gaad-kam-admin.php' );
 
-
-	
 	require_once( 'inc/class-json-data.php' );
 	require_once( 'inc/class-rest.php' );	
 	require_once( 'inc/register-routers.php' );

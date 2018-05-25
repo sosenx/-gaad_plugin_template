@@ -65,6 +65,12 @@ class admin_actions{
     wp_enqueue_script( 'vue-router-js', 'https://unpkg.com/vue-router/dist/vue-router.js', array( 'vue-js' ), false, null );
     wp_enqueue_script( 'vue-x-js', 'https://unpkg.com/vuex', array( 'vue-js' ), false, null );
     wp_enqueue_script( 'bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js', array( 'tether-js', 'jquery' ), false, null );
+    
+    $mofile = GAAD_KAM_ADMIN_LANG_DIR .'/'. str_replace('\\', '', GAAD_KAM_ADMIN_NAMESPACE ) . '-' . \get_locale() .'.mo';
+    if( is_file($mofile ) ){
+      load_textdomain( str_replace('\\', '', GAAD_KAM_ADMIN_NAMESPACE ), $mofile);
+    }
+    
     return $this;
   }
   

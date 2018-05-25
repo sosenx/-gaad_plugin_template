@@ -291,6 +291,8 @@ class actions {
       }       
     }  
 
+
+    
     foreach ($core as $lib => $data) {
       //if ( !wp_script_is( $lib ) ) {
         wp_enqueue_script( $lib, $data[0], $data[1], $data[2], $data[3] );

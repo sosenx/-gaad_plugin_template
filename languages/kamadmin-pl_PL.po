@@ -1,0 +1,148 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: kamadmin\n"
+"POT-Creation-Date: 2018-05-25 14:38+0200\n"
+"PO-Revision-Date: 2018-05-25 15:18+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: \\__;__\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: class\n"
+"X-Poedit-SearchPath-2: inc\n"
+
+#: class/gaad-kam-admin.php:24
+msgid "Cameras"
+msgstr "Kamery"
+
+#: class/gaad-kam-admin.php:25 class/gaad-kam-admin.php:51
+msgid "Camera"
+msgstr "Kamera"
+
+#: class/gaad-kam-admin.php:26
+msgid "Item Archives"
+msgstr ""
+
+#: class/gaad-kam-admin.php:27
+msgid "Item Attributes"
+msgstr ""
+
+#: class/gaad-kam-admin.php:28
+msgid "Parent Item:"
+msgstr ""
+
+#: class/gaad-kam-admin.php:29
+msgid "All Items"
+msgstr "Wszystkie kamenry"
+
+#: class/gaad-kam-admin.php:30
+msgid "Add New Item"
+msgstr "Dodaj nowy element"
+
+#: class/gaad-kam-admin.php:31
+msgid "Add new camera"
+msgstr "Dodaj nową kamerę"
+
+#: class/gaad-kam-admin.php:32
+msgid "New camera"
+msgstr "Nowa kamera"
+
+#: class/gaad-kam-admin.php:33
+msgid "Edit camera"
+msgstr "Edytuj kamerę"
+
+#: class/gaad-kam-admin.php:34
+msgid "Update camera"
+msgstr "Uaktualnij kamerę"
+
+#: class/gaad-kam-admin.php:35
+msgid "View camera"
+msgstr "Pokaż kamerę"
+
+#: class/gaad-kam-admin.php:36
+msgid "View cameras"
+msgstr "Pokaż kamery"
+
+#: class/gaad-kam-admin.php:37
+msgid "Search cameras"
+msgstr "Szukaj kamery"
+
+#: class/gaad-kam-admin.php:38
+msgid "Not found"
+msgstr "Nie znaleziono"
+
+#: class/gaad-kam-admin.php:39
+msgid "Not found in Trash"
+msgstr "Nie znaleziono w koszu"
+
+#: class/gaad-kam-admin.php:40
+msgid "Featured Image"
+msgstr ""
+
+#: class/gaad-kam-admin.php:41
+msgid "Set featured image"
+msgstr ""
+
+#: class/gaad-kam-admin.php:42
+msgid "Remove featured image"
+msgstr ""
+
+#: class/gaad-kam-admin.php:43
+msgid "Use as featured image"
+msgstr ""
+
+#: class/gaad-kam-admin.php:44
+msgid "Insert into item"
+msgstr ""
+
+#: class/gaad-kam-admin.php:45
+msgid "Uploaded to this item"
+msgstr ""
+
+#: class/gaad-kam-admin.php:46
+msgid "Items list"
+msgstr ""
+
+#: class/gaad-kam-admin.php:47
+msgid "Items list navigation"
+msgstr ""
+
+#: class/gaad-kam-admin.php:48
+msgid "Filter items list"
+msgstr ""
+
+#: class/gaad-kam-admin.php:79
+msgid "Camera settings"
+msgstr "Ustawienia kamery"
+
+#: class/gaad-kam-admin.php:138
+msgid "Assigned cameras "
+msgstr "Podpięte kamery"
+
+#: class/gaad-kam-admin.php:142
+msgid "Camera name"
+msgstr "Nazwa kamery"
+
+#: class/gaad-kam-admin.php:143
+msgid "URL"
+msgstr ""
+
+#: class/gaad-kam-admin.php:226
+msgid "Camera URL"
+msgstr "Adres kamery"
+
+#: class/gaad-kam-admin.php:231
+msgid "Assigned user"
+msgstr "Przypisany użytkownik"
+
+#: class/gaad-kam-admin.php:257
+msgid "Operator kamery"
+msgstr "Operator kamery"
