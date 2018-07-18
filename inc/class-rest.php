@@ -62,34 +62,13 @@ class rest{
 
     public static function kamera( $data = NULL ){
         $r = array( 'plugin_name' => "kamadmin\\rest::kamera" );
-      //  $url = "http://live:pkpplksa@79.162.234.236:4479/video.mp4?line=1&inst=2&rec=0&rnd=13928";
-      /* $login = 'live';
-        $password = 'pkpplksa';
-        $url = "http://79.162.234.236:4479/video.mp4?line=1&inst=2&rec=0&rnd=13928";
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,$url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-        curl_setopt($ch, CURLOPT_USERPWD, "$login:$password");
-        $result = curl_exec($ch);
-        curl_close($ch);
 
-        header( "Content-type: video/mp4");
-        */
-
-
-//
-      //  echo( $result);
-        //<video controls="" autoplay="" name="media"><source src="http://live:pkpplksa@79.162.234.236:4479/video.mp4?line=1&amp;inst=2&amp;rec=0&amp;rnd=13928" type="video/mp4"></video>
-
-      //  header("Cache-Control: max-age=2592000, public");
-      //  header("Expires: ".gmdate('D, d M Y H:i:s', time()+2592000) . ' GMT');
-     //   header("Last-Modified: ".gmdate('D, d M Y H:i:s', @filemtime('http://live:pkpplksa@79.162.234.236:4479/video.mp4?line=1&inst=2&rec=0&rnd=13928')) . ' GMT' );
-    //   echo  my_stream_get_contents (  );
         header("Content-Type: text/html");
 ?>
 
-        <video controls autoplay name="media"><source src="http://live:pkpplksa@79.162.234.236:4479/video.mp4?line=1&inst=2&rec=0&rnd=13928" type="video/mp4"></video>
+        <video controls autoplay name="media">
+            <source src="http://live:pkpplksa@79.162.234.236:4479/video.mp4?line=1&inst=2&rec=0&rnd=13928" type="video/mp4">
+        </video>
         <?php
     }
 	

@@ -60,15 +60,26 @@ public static function cameraStreamMODAL__TOOMANY( ){
     ob_start();
     ?>
         <div id="camera-stream-modal-overlay" class="" >
-            <div id="camera-stream-modal">
+            <div id="camera-stream-modal" data-params="<?php echo base64_encode( json_encode( array() ) ) ?>">
                 <div class="close-modal">x</div>
-                <h1>KOMUNIKAT</h1>
+               <?php
+               $v_post = get_posts( array( 'post_type' => 'info',
+                   'post_title' => "Too many conn" ) );
+              if (is_array($v_post) && !empty( $v_post )){
+                  $err_post = $v_post[0];
+                  echo \do_shortcode( $err_post->post_content );
+              }
+
+               ?>
             </div>
         </div>
 
     <?php
-    self::MODAL_STYLE(  );
 
+    $ext_styles = "#camera-stream-modal {display: block}";
+
+    self::MODAL_STYLE( $ext_styles );
+    self::MODAL_SCRIPT( );
     $buf = ob_get_contents();
     ob_end_clean();
     return $buf;
@@ -101,8 +112,66 @@ public static function cameraStreamMODAL( $post_id, $user_id ){
             </div>
 
     <?php
-    self::MODAL_STYLE(  )
-    ?>
+        self::MODAL_STYLE( );
+        self::MODAL_SCRIPT( );
+
+	    $buf = ob_get_contents();
+	    ob_end_clean();
+
+	    return $buf;
+	}
+
+    public static function MODAL_STYLE( $ext = NULL  ){
+	    ?>
+            <style>
+                #camera-stream-modal-overlay{
+                    position: absolute;
+                    top:0;
+                    left:0;
+                    width: 100vw;
+                    height: 100vh;
+                    z-index: 100000000;
+                    background: rgba( 0,0,0, .45);
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                #camera-stream-modal{
+                    position: absolute;
+                    z-index: 100000001;
+                    background: white;
+                    padding: 10px;
+                    min-width: 530px;
+                    max-width: 70vw;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    top: 20vh;
+                }
+                .close-modal{
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 100px;
+                    position: absolute;
+                    top:-20px;
+                    right:-20px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: white;
+                    line-height: 0;
+                    font-weight: bold;
+                    font-size: 1rem;
+                    padding: 0.7rem;
+                    cursor: pointer;
+                }
+                <?php echo $ext; ?>
+            </style>
+    <?php
+}
+    public static function MODAL_SCRIPT( $ext = NULL  ){
+	    ?>
         <script>
         logOutUser = function(){
             jQuery.ajax( {
@@ -148,61 +217,6 @@ public static function cameraStreamMODAL( $post_id, $user_id ){
         });
     </script>
 
-
-
-        <?php
-	    $buf = ob_get_contents();
-	    ob_end_clean();
-
-	    return $buf;
-	}
-
-    public static function MODAL_STYLE(  ){
-	    ?>
-            <style>
-                #camera-stream-modal-overlay{
-                    position: absolute;
-                    top:0;
-                    left:0;
-                    width: 100vw;
-                    height: 100vh;
-                    z-index: 100000000;
-                    background: rgba( 0,0,0, .45);
-
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-                #camera-stream-modal{
-                    position: absolute;
-                    z-index: 100000001;
-                    background: white;
-                    padding: 10px;
-                    min-width: 530px;
-                    max-width: 70vw;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    top: 20vh;
-                }
-                .close-modal{
-                    width: 20px;
-                    height: 20px;
-                    border-radius: 100px;
-                    position: absolute;
-                    top:-20px;
-                    right:-20px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    background-color: white;
-                    line-height: 0;
-                    font-weight: bold;
-                    font-size: 1rem;
-                    padding: 0.7rem;
-                    cursor: pointer;
-                }
-            </style>
     <?php
 }
 
@@ -352,9 +366,9 @@ public static function manage_camera_posts_columns( $columns ){
 	 */
 	public static function add_post_types(){
 
-		
+        register_taxonomy_for_object_type( 'category', 'info' );
 
-		\register_post_type( 'camera',
+        \register_post_type( 'camera',
 		  \apply_filters( 'wpse64458_callb_post_type_camera',
 		    array(
 		      'labels'              => array(
@@ -400,7 +414,77 @@ public static function manage_camera_posts_columns( $columns ){
 		    )
 		  )
 		);
-	}
+
+		\register_post_type( 'info',
+		  \apply_filters( 'wpse64458_callb_post_type_info',
+		    array(
+		      'labels'              => array(
+		        'name'                  => \__( 'Infos', 'kamadmin' ),
+		        'singular_name'         => \__( 'Info', 'kamadmin' ),
+		        'all_items'             => \__( 'All Infos', 'kamadmin' ),
+		        'menu_name'             => \__( 'Infos', 'kamadmin' ),
+		        'add_new'               => \__( 'Add New', 'kamadmin' ),
+		        'add_new_item'          => \__( 'Add new info', 'kamadmin' ),
+		        'edit'                  => \__( 'Edit', 'kamadmin' ),
+		        'edit_item'             => \__( 'Edit info', 'kamadmin' ),
+		        'new_item'              => \__( 'New info', 'kamadmin' ),
+		        'view'                  => \__( 'View info', 'kamadmin' ),
+		        'view_item'             => \__( 'View info', 'kamadmin' ),
+		        'search_items'          => \__( 'Search infos', 'kamadmin' ),
+		        'not_found'             => \__( 'No infos found', 'kamadmin' ),
+		        'not_found_in_trash'    => \__( 'No infos found in trash', 'kamadmin' ),
+		        'parent'                => \__( 'Parent info', 'kamadmin' ),
+		        'featured_image'        => \__( 'Info image', 'kamadmin' ),
+		        'set_featured_image'    => \__( 'Set info image', 'kamadmin' ),
+		        'remove_featured_image' => \__( 'Remove info image', 'kamadmin' ),
+		        'use_featured_image'    => \__( 'Use as info image', 'kamadmin' ),
+		        'insert_into_item'      => \__( 'Insert into info', 'kamadmin' ),
+		        'uploaded_to_this_item' => \__( 'Uploaded to this info', 'kamadmin' ),
+		        'filter_items_list'     => \__( 'Filter infos', 'kamadmin' ),
+		        'items_list_navigation' => \__( 'Infos navigation', 'kamadmin' ),
+		        'items_list'            => \__( 'Infos list', 'kamadmin' ),
+		      ),
+		      'public'              => true,
+		      'show_ui'             => true,
+		      'capability_type'     => array( 'pages', 'infos','info' ),
+		      'map_meta_cap'        => true,
+		      'menu_icon'          => 'dashicons-groups',
+		      'publicly_queryable'  => true,
+		      'exclude_from_search' => true,
+		      'hierarchical'        => false, // Hierarchical causes memory issues - WP loads all records!
+		      'rewrite'            => array( 'slug' => 'info' ),
+		      'query_var'           => true,
+		      'supports'            => array( 'title', 'editor' ),
+		      'has_archive'         => false,
+		      'show_in_nav_menus'   => true,
+		      'show_in_rest'        => true,
+		    )
+		  )
+		);
+
+        if ( ! get_option( 'kamadmin-info-posts-added' ) ){
+
+            add_option( 'kamadmin-info-posts-added', 'set-'.time(), true );
+            $v_post = get_posts( array( 'post_type' => 'info',
+                'post_title' => "Too many conn" ) );
+
+            if (is_array($v_post) && empty( $v_post )){
+
+                $content = 'zbyt duzo polaczeń';
+
+                wp_insert_post(array(
+                    'post_type' => 'info',
+                    'post_title' => "Too many conn",
+                    'post_content' => $content,
+                    'post_status' => 'publish',
+                    'comment_status' => 'closed',   // if you prefer
+                    'ping_status' => 'closed',      // if you prefer
+                ));
+            }
+            /**/
+        }
+
+    }
 
 
 	public static function add_post_meta_box(){
@@ -824,24 +908,44 @@ public static function manage_camera_posts_columns( $columns ){
 					  'delete_private_pages' => true,
 					  'edit_private_pages' => true,
 					  'read_private_pages' => true,
-					  'read_camera' => true,
-					  'read_private_camera' => true,
-					  'edit_camera' => true,
-					  'edit_others_camera' => true,
-					  'edit_published_camera' => true,
-					  'publish_camera' => false,
-					  'delete_others_camera' => true,
-					  'delete_private_camera' => true,
-					  'delete_published_camera' => true,
-					  'read_private_cameras' => true,
-					  'edit_cameras' => true,
-					  'edit_others_cameras' => true,
-					  'publish_cameras' => true,
-					  'edit_published_cameras' => true,
-					  'delete_others_cameras' => true,
-					  'delete_private_cameras' => true,
-					  'delete_published_cameras' => true,
-					  'create_camera' => true,
+
+                    'read_camera' => true,
+                    'read_private_camera' => true,
+                    'edit_camera' => true,
+                    'edit_others_camera' => true,
+                    'edit_published_camera' => true,
+                    'publish_camera' => false,
+                    'delete_others_camera' => true,
+                    'delete_private_camera' => true,
+                    'delete_published_camera' => true,
+                    'read_private_cameras' => true,
+                    'edit_cameras' => true,
+                    'edit_others_cameras' => true,
+                    'publish_cameras' => true,
+                    'edit_published_cameras' => true,
+                    'delete_others_cameras' => true,
+                    'delete_private_cameras' => true,
+                    'delete_published_cameras' => true,
+                    'create_camera' => true,
+
+                    'read_info' => true,
+                    'read_private_info' => true,
+                    'edit_info' => true,
+                    'edit_others_info' => true,
+                    'edit_published_info' => true,
+                    'publish_info' => false,
+                    'delete_others_info' => true,
+                    'delete_private_info' => true,
+                    'delete_published_info' => true,
+                    'read_private_infos' => true,
+                    'edit_infos' => true,
+                    'edit_others_infos' => true,
+                    'publish_infos' => true,
+                    'edit_published_infos' => true,
+                    'delete_others_infos' => true,
+                    'delete_private_infos' => true,
+                    'delete_published_infos' => true,
+                    'create_info' => true,
 			    )
 			)
 		);
