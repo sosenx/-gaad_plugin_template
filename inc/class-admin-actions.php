@@ -60,7 +60,8 @@ class admin_actions{
     
   public function admin_scripts(){
     
-    
+
+    wp_enqueue_script( 'kamadmin-js', GAAD_KAM_ADMIN_URL . '/js/kam-admin.js', array('jquery'), false, null );
     wp_enqueue_script( 'tether-js', GAAD_KAM_ADMIN_URL . '/node_modules/tether/dist/js/tether.min.js', false, false, null );
     wp_enqueue_script( 'vue-js', 'https://unpkg.com/vue@2.4.2/dist/vue.js', false, false, null );
     wp_enqueue_script( 'vue-router-js', 'https://unpkg.com/vue-router/dist/vue-router.js', array( 'vue-js' ), false, null );

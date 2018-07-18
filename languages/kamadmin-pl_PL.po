@@ -1,148 +1,179 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kamadmin\n"
-"POT-Creation-Date: 2018-05-25 14:38+0200\n"
-"PO-Revision-Date: 2018-05-25 15:18+0200\n"
+"POT-Creation-Date: 2018-07-17 01:10+0200\n"
+"PO-Revision-Date: 2018-07-17 01:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.9\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: \\__;__\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPath-1: class\n"
-"X-Poedit-SearchPath-2: inc\n"
+"X-Poedit-SearchPath-0: class\n"
+"X-Poedit-SearchPath-1: inc\n"
 
-#: class/gaad-kam-admin.php:24
+#: class/gaad-kam-admin.php:179
+msgid "Akcja"
+msgstr ""
+
+#: class/gaad-kam-admin.php:329 class/gaad-kam-admin.php:332
 msgid "Cameras"
 msgstr "Kamery"
 
-#: class/gaad-kam-admin.php:25 class/gaad-kam-admin.php:51
+#: class/gaad-kam-admin.php:330
 msgid "Camera"
 msgstr "Kamera"
 
-#: class/gaad-kam-admin.php:26
-msgid "Item Archives"
-msgstr ""
+#: class/gaad-kam-admin.php:331
+msgid "All Cameras"
+msgstr "Wszystkie kamery"
 
-#: class/gaad-kam-admin.php:27
-msgid "Item Attributes"
-msgstr ""
+#: class/gaad-kam-admin.php:333
+msgid "Add New"
+msgstr "Dodaj nowy"
 
-#: class/gaad-kam-admin.php:28
-msgid "Parent Item:"
-msgstr ""
-
-#: class/gaad-kam-admin.php:29
-msgid "All Items"
-msgstr "Wszystkie kamenry"
-
-#: class/gaad-kam-admin.php:30
-msgid "Add New Item"
-msgstr "Dodaj nowy element"
-
-#: class/gaad-kam-admin.php:31
+#: class/gaad-kam-admin.php:334
 msgid "Add new camera"
 msgstr "Dodaj nową kamerę"
 
-#: class/gaad-kam-admin.php:32
-msgid "New camera"
-msgstr "Nowa kamera"
+#: class/gaad-kam-admin.php:335
+msgid "Edit"
+msgstr "Edytuj"
 
-#: class/gaad-kam-admin.php:33
+#: class/gaad-kam-admin.php:336
 msgid "Edit camera"
 msgstr "Edytuj kamerę"
 
-#: class/gaad-kam-admin.php:34
-msgid "Update camera"
-msgstr "Uaktualnij kamerę"
+#: class/gaad-kam-admin.php:337
+msgid "New camera"
+msgstr "Nowa kamera"
 
-#: class/gaad-kam-admin.php:35
+#: class/gaad-kam-admin.php:338 class/gaad-kam-admin.php:339
 msgid "View camera"
 msgstr "Pokaż kamerę"
 
-#: class/gaad-kam-admin.php:36
-msgid "View cameras"
-msgstr "Pokaż kamery"
-
-#: class/gaad-kam-admin.php:37
+#: class/gaad-kam-admin.php:340
 msgid "Search cameras"
 msgstr "Szukaj kamery"
 
-#: class/gaad-kam-admin.php:38
-msgid "Not found"
-msgstr "Nie znaleziono"
+#: class/gaad-kam-admin.php:341
+msgid "No cameras found"
+msgstr "Nie znaleziono kamer"
 
-#: class/gaad-kam-admin.php:39
-msgid "Not found in Trash"
+#: class/gaad-kam-admin.php:342
+msgid "No cameras found in trash"
 msgstr "Nie znaleziono w koszu"
 
-#: class/gaad-kam-admin.php:40
-msgid "Featured Image"
+#: class/gaad-kam-admin.php:343
+msgid "Parent camera"
 msgstr ""
 
-#: class/gaad-kam-admin.php:41
-msgid "Set featured image"
+#: class/gaad-kam-admin.php:344
+msgid "Camera image"
 msgstr ""
 
-#: class/gaad-kam-admin.php:42
-msgid "Remove featured image"
+#: class/gaad-kam-admin.php:345
+#, fuzzy
+#| msgid "New camera"
+msgid "Set camera image"
+msgstr "Nowa kamera"
+
+#: class/gaad-kam-admin.php:346
+msgid "Remove camera image"
 msgstr ""
 
-#: class/gaad-kam-admin.php:43
-msgid "Use as featured image"
+#: class/gaad-kam-admin.php:347
+msgid "Use as camera image"
 msgstr ""
 
-#: class/gaad-kam-admin.php:44
-msgid "Insert into item"
-msgstr ""
+#: class/gaad-kam-admin.php:348
+msgid "Insert into camera"
+msgstr "Edytuj kamerę"
 
-#: class/gaad-kam-admin.php:45
-msgid "Uploaded to this item"
-msgstr ""
+#: class/gaad-kam-admin.php:349
+msgid "Uploaded to this camera"
+msgstr "Uaktualnij kamerę"
 
-#: class/gaad-kam-admin.php:46
-msgid "Items list"
-msgstr ""
+#: class/gaad-kam-admin.php:350
+msgid "Filter cameras"
+msgstr "Pokaż kamery"
 
-#: class/gaad-kam-admin.php:47
-msgid "Items list navigation"
-msgstr ""
+#: class/gaad-kam-admin.php:351
+msgid "Cameras navigation"
+msgstr "Nazwa kamery"
 
-#: class/gaad-kam-admin.php:48
-msgid "Filter items list"
-msgstr ""
+#: class/gaad-kam-admin.php:352
+msgid "Cameras list"
+msgstr "Kamery"
 
-#: class/gaad-kam-admin.php:79
+#: class/gaad-kam-admin.php:376
 msgid "Camera settings"
 msgstr "Ustawienia kamery"
 
-#: class/gaad-kam-admin.php:138
+#: class/gaad-kam-admin.php:451
 msgid "Assigned cameras "
-msgstr "Podpięte kamery"
+msgstr "Przypisane  kamery "
 
-#: class/gaad-kam-admin.php:142
+#: class/gaad-kam-admin.php:455
 msgid "Camera name"
 msgstr "Nazwa kamery"
 
-#: class/gaad-kam-admin.php:143
+#: class/gaad-kam-admin.php:456
 msgid "URL"
-msgstr ""
+msgstr "Adres"
 
-#: class/gaad-kam-admin.php:226
+#: class/gaad-kam-admin.php:581
+msgid "Max logged in users"
+msgstr "Maks. ilość zalogowanych"
+
+#: class/gaad-kam-admin.php:586
+msgid "Max logged in time [sec]"
+msgstr "Maks. czas sesji"
+
+#: class/gaad-kam-admin.php:591
 msgid "Camera URL"
 msgstr "Adres kamery"
 
-#: class/gaad-kam-admin.php:231
+#: class/gaad-kam-admin.php:596
+#, fuzzy
+#| msgid "Camera URL"
+msgid "Camera URL Mp4 file"
+msgstr "Adres kamery"
+
+#: class/gaad-kam-admin.php:602
+#, fuzzy
+#| msgid "New camera"
+msgid "Remote camera user"
+msgstr "Nowa kamera"
+
+#: class/gaad-kam-admin.php:607
+msgid "Remote camera password"
+msgstr "Hasło do kamery"
+
+#: class/gaad-kam-admin.php:613
 msgid "Assigned user"
 msgstr "Przypisany użytkownik"
 
-#: class/gaad-kam-admin.php:257
-msgid "Operator kamery"
-msgstr "Operator kamery"
+#: class/gaad-kam-admin.php:687
+#, fuzzy
+#| msgid "Camera name"
+msgid "Camera operator"
+msgstr "Nazwa kamery"
+
+#: class/gaad-kam-admin.php:757
+#, fuzzy
+#| msgid "Camera name"
+msgid "Cameras users administrator"
+msgstr "Nazwa kamery"
+
+#~ msgid "All Items"
+#~ msgstr "Wszystkie kamenry"
+
+#~ msgid "Operator kamery"
+#~ msgstr "Operator kamery"

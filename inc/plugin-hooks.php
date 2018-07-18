@@ -49,6 +49,15 @@ $core_hooks->add_hook( 'action', array('show_user_profile' ), array( GAAD_KAM_AD
 $core_hooks->add_hook( 'action', array('edit_user_profile' ), array( GAAD_KAM_ADMIN_NAMESPACE . 'gaad_kam_admin::user_profile_cameras_list', 10, 1) );
 
 
+$core_hooks->add_hook( 'action', array('admin_menu' ), array( GAAD_KAM_ADMIN_NAMESPACE . 'gaad_kam_admin::disable_admin_menu_items', 999, 0) );
+$core_hooks->add_hook( 'action', array('admin_bar_menu' ), array( GAAD_KAM_ADMIN_NAMESPACE . 'gaad_kam_admin::disable_admin_bar_nodes', 999) );
+$core_hooks->add_hook( 'action', array('admin_footer' ), array( GAAD_KAM_ADMIN_NAMESPACE . 'gaad_kam_admin::admin_footer_styles', 10, 0) );
+
+$core_hooks->add_hook( 'action', array('manage_camera_posts_columns' ), array( GAAD_KAM_ADMIN_NAMESPACE . 'gaad_kam_admin::manage_camera_posts_columns', 10, 1) );
+$core_hooks->add_hook( 'action', array('manage_camera_posts_custom_column' ), array( GAAD_KAM_ADMIN_NAMESPACE . 'gaad_kam_admin::manage_camera_posts_custom_column', 10, 2) );
+
+
+
 $core_hooks->apply_hooks();
 
  ?>
