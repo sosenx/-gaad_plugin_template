@@ -36,8 +36,8 @@ class gaad_kam_admin{
 
 public static function manage_camera_posts_custom_column( $column_name, $post_id ){
 
-	 if ( $column_name == 'login_btn'){
-		$url = get_post_meta( $post_id, "camera-url", true );
+    if ( $column_name == 'login_btn'){
+        $url = get_post_meta( $post_id, "camera-url", true );
         $elink = get_edit_post_link( $post_id);
 
 
@@ -45,15 +45,22 @@ public static function manage_camera_posts_custom_column( $column_name, $post_id
         $hash = md5( $post_id );
         $logged_in = \kamadmin\gaad_kam_admin::getLooggedInUsers( $hash );
         $logged_in_count = $logged_in ? count( $logged_in ) : 0;
-         $logged_in_count_max = get_post_meta( $post_id, 'max_looged_in')[0];
-       // var_dump( $logged_in ,       $logged_in_count>=$logged_in_count_max );
-         $disabled = $logged_in_count>=$logged_in_count_max ? " " : "";
+        $logged_in_count_max = get_post_meta( $post_id, 'max_looged_in')[0];
+        // var_dump( $logged_in ,       $logged_in_count>=$logged_in_count_max );
+        $disabled = $logged_in_count>=$logged_in_count_max ? " " : "";
 
-		echo "<a class=\"button button-primary button-large kam-login {$disabled}\" href=\"{$elink}\" 
+        echo "<a class=\"button button-primary button-large kam-login {$disabled}\" href=\"{$elink}\" 
 data-rest=\"" . get_rest_url() . __NAMESPACE__ .'/v1/kl/?p='. $post_id . '&u=' . get_current_user_id() . "\"
 target=\"_new\">Zaloguj</a>";
 
-	}
+    }
+
+    if ( $column_name == 'login_credentials'){
+        $user                    = get_post_meta( $post_id, 'remote-user', true );
+        $pass                    = get_post_meta( $post_id, 'remote-pass', true );
+
+        echo "<strong>login:</strong> " .$user."<br><strong>hasło:</strong> ".$pass;
+    }
 }
 
 public static function cameraStreamMODAL__TOOMANY( ){
@@ -84,7 +91,7 @@ public static function cameraStreamMODAL__TOOMANY( ){
     ob_end_clean();
     return $buf;
 }
-public static function cameraStreamMODAL( $post_id, $user_id ){
+    public static function cameraStreamMODAL( $post_id, $user_id ){
 	    ob_start();
             $user                    = get_post_meta( $post_id, 'remote-user', true );
             $pass                    = get_post_meta( $post_id, 'remote-pass', true );
@@ -170,6 +177,7 @@ public static function cameraStreamMODAL( $post_id, $user_id ){
             </style>
     <?php
 }
+
     public static function MODAL_SCRIPT( $ext = NULL  ){
 	    ?>
         <script>
@@ -220,9 +228,10 @@ public static function cameraStreamMODAL( $post_id, $user_id ){
     <?php
 }
 
-public static function manage_camera_posts_columns( $columns ){
+    public static function manage_camera_posts_columns( $columns ){
     if( is_array( $columns ) )
         $columns['login_btn'] = __( 'Akcja' );
+        $columns['login_credentials'] = __( 'Dane dostępowe' );
         unset($columns['date']);
 
     return $columns;

@@ -3,7 +3,7 @@ namespace kamadmin;
 /*
  * Plugin Name: Gaad Kamera admin
  * Text Domain: kamadmin
- * Version: 1.0
+ * Version: 1.25
  * Plugin URI: 
  * Description:  
  * Author: Bartek Sosnowski @ Grupa Nova
