@@ -1,5 +1,5 @@
 <?php 
-namespace kamadmin;
+namespace apii;
    
 class actions {
   
@@ -64,8 +64,8 @@ class actions {
   public static function update_theme_files( ){
    
     $files_updated = filter_var( get_option( 'files_updated', 'false' ), FILTER_VALIDATE_BOOLEAN);
-    if( !$files_updated || GAAD_KAM_ADMIN_FORCE_FILES_UPDATED ){
-      if( actions::xcopy( GAAD_KAM_ADMIN_THEME_FILES_DIR, get_template_directory() ) ){
+    if( !$files_updated || APII_FORCE_FILES_UPDATED ){
+      if( actions::xcopy( APII_THEME_FILES_DIR, get_template_directory() ) ){
         update_option( 'files_updated', 'true', '', 'yes' );
         
         return true;
@@ -118,7 +118,7 @@ class actions {
      
       $template = $dir . '/'.$f;      
       if( is_file( $template ) && $f !== 'router.html' ){
-        $template_id = 'template-' . basename(GAAD_KAM_ADMIN_NAMESPACE) . '-' . str_replace( '-php', '', sanitize_title( $id ) );
+        $template_id = 'template-' . basename(APII_NAMESPACE) . '-' . str_replace( '-php', '', sanitize_title( $id ) );
         ?><script type="template/javascript" id="<?php echo $template_id; ?>"><?php require_once( $template ); ?></script><?php
       }      
     }
@@ -157,11 +157,11 @@ class actions {
       $post_slug = $post->post_name; 
    
       //common components templates
-      actions::put_components( GAAD_KAM_ADMIN_APP_COMPONENTS_DIR );
+      actions::put_components( APII_APP_COMPONENTS_DIR );
 
-      if ( is_dir( GAAD_KAM_ADMIN_APP_COMPONENTS_DIR . '/' . $post_slug ) ) {
+      if ( is_dir( APII_APP_COMPONENTS_DIR . '/' . $post_slug ) ) {
         //app templates
-        actions::put_components( GAAD_KAM_ADMIN_APP_COMPONENTS_DIR . '/' . $post_slug );
+        actions::put_components( APII_APP_COMPONENTS_DIR . '/' . $post_slug );
       }
    }      
  }
@@ -176,10 +176,10 @@ class actions {
       if ( is_object( $post)) {
        $post_slug = $post->post_name; 
         //common components templates
-         actions::put_templates(  GAAD_KAM_ADMIN_APP_TEMPLATES_DIR );
+         actions::put_templates(  APII_APP_TEMPLATES_DIR );
          
-         if ( is_dir( GAAD_KAM_ADMIN_APP_TEMPLATES_DIR . '/' . $post_slug ) ) {
-           actions::put_templates( GAAD_KAM_ADMIN_APP_TEMPLATES_DIR . '/' . $post_slug );
+         if ( is_dir( APII_APP_TEMPLATES_DIR . '/' . $post_slug ) ) {
+           actions::put_templates( APII_APP_TEMPLATES_DIR . '/' . $post_slug );
          }
       }
   }
@@ -187,25 +187,25 @@ class actions {
 
   public static function app_data_src(){
     $json_data = new json_data();
-    ?><script id="<?php echo basename(constant( 'kamadmin\GAAD_KAM_ADMIN_NAMESPACE' )); ?>-json-data" type="application/javascript"><?php $json_data->draw(); ?></script><?php    
+    ?><script id="<?php echo basename(constant( 'apii\APII_NAMESPACE' )); ?>-json-data" type="application/javascript"><?php $json_data->draw(); ?></script><?php
   }
   
   public static function common_styles(){
     global $post;
     $post_slug = is_object( $post) ? $post->post_name : false ;
 
-    if(  GAAD_KAM_ADMIN_ENV === 'DEV' ){      
-      wp_enqueue_style( basename(GAAD_KAM_ADMIN_NAMESPACE) . '-app-css', GAAD_KAM_ADMIN_URL . '/css/app.css', false, false);
+    if(  APII_ENV === 'DEV' ){
+      wp_enqueue_style( basename(APII_NAMESPACE) . '-app-css', APII_URL . '/css/app.css', false, false);
     }
     
-    if(  GAAD_KAM_ADMIN_ENV === 'DIST' ){
-      wp_enqueue_style( basename(GAAD_KAM_ADMIN_NAMESPACE) . '-app-css', GAAD_KAM_ADMIN_URL . '/dist/css/app.min.css', false, false);
+    if(  APII_ENV === 'DIST' ){
+      wp_enqueue_style( basename(APII_NAMESPACE) . '-app-css', APII_URL . '/dist/css/app.min.css', false, false);
     }        
   }
   
   public static function app_shortcodes(){
-    $namespace = basename( constant( 'kamadmin\GAAD_KAM_ADMIN_NAMESPACE' ) );
-    $shortcode = basename( constant( 'kamadmin\GAAD_KAM_ADMIN_SHORTCODE' ) );
+    $namespace = basename( constant( 'apii\APII_NAMESPACE' ) );
+    $shortcode = basename( constant( 'apii\APII_SHORTCODE' ) );
     if ( method_exists( $namespace . '\shortcodes', $shortcode ) ) {
       add_shortcode( $shortcode, $namespace . '\shortcodes::' . $shortcode );
     } 
@@ -222,18 +222,18 @@ class actions {
     
 
     wp_enqueue_script( 'font-awesome-js', 'https://use.fontawesome.com/c93a35a2e5.js', array( ), false, true );    
-     // wp_enqueue_script( 'jquery', GAAD_KAM_ADMIN_URL . '/dist/js/app.min.js', array( 'jquery' ), false, true );  
+     // wp_enqueue_script( 'jquery', APII_URL . '/dist/js/app.min.js', array( 'jquery' ), false, true );
 
-    if(  GAAD_KAM_ADMIN_ENV === 'DEV' ){
-      add_action('wp_head', '\\' . GAAD_KAM_ADMIN_NAMESPACE . 'actions::app_components', 9 );
-      wp_enqueue_script( __NAMESPACE__ . '-app-dev-js', GAAD_KAM_ADMIN_URL . '/js/app.js', 
+    if(  APII_ENV === 'DEV' ){
+      add_action('wp_head', '\\' . APII_NAMESPACE . 'actions::app_components', 9 );
+      wp_enqueue_script( __NAMESPACE__ . '-app-dev-js', APII_URL . '/js/app.js',
         array( 'vue-js', 'vue-router-js', 'bootstrap-vue-js' ),
          false, true );
       }
     
-    if(  GAAD_KAM_ADMIN_ENV === 'DIST' ){
+    if(  APII_ENV === 'DIST' ){
       
-      wp_enqueue_script( __NAMESPACE__ . '-app-dist-js', GAAD_KAM_ADMIN_URL . '/dist/js/app.min.js', array( 'jquery', 'vue-js' ), false, true );    
+      wp_enqueue_script( __NAMESPACE__ . '-app-dist-js', APII_URL . '/dist/js/app.min.js', array( 'jquery', 'vue-js' ), false, true );
 
     } 
     
@@ -243,7 +243,7 @@ class actions {
   
   public static function common_scripts(){
      
-  //   wp_enqueue_script( 'gkredytslider-app-js', GAAD_KAM_ADMIN_URL . '/js/gkredytslider-app.js', array( 'vue-js' ), false, true );
+  //   wp_enqueue_script( 'gkredytslider-app-js', APII_URL . '/js/gkredytslider-app.js', array( 'vue-js' ), false, true );
   }
   
   public static function test(){
@@ -256,9 +256,9 @@ class actions {
   */
   public static function core_scripts(){
 
-    if ( GAAD_KAM_ADMIN_ENV === 'DIST') {
+    if ( APII_ENV === 'DIST') {
       $core = array(
-        'modules-js' => array( GAAD_KAM_ADMIN_URL . '/dist/js/modules.min.js', array( 'vue-js' ), false, null ),
+        'modules-js' => array( APII_URL . '/dist/js/modules.min.js', array( 'vue-js' ), false, null ),
         'vue-js' => array( 'https://unpkg.com/vue@2.4.2/dist/vue.js', false, false, null  ),        
         'vue-router-js' => array( 'https://unpkg.com/vue-router/dist/vue-router.js', array( 'vue-js' ), false, null ),
         'vue-x-js' => array( 'https://unpkg.com/vuex', array( 'vue-js' ), false, null ),       
@@ -266,28 +266,28 @@ class actions {
       );
     }
 
-    if ( GAAD_KAM_ADMIN_ENV === 'DEV') {
+    if ( APII_ENV === 'DEV') {
       /*
       * Add core scripts to equeue to core table
       * Table index is a slug. Order of args is the same as in wp_enqueue_script function.
       */
       $core = array(
-       'tether-js' => array( GAAD_KAM_ADMIN_URL . '/node_modules/tether/dist/js/tether.min.js', false, false, null ),
+       'tether-js' => array( APII_URL . '/node_modules/tether/dist/js/tether.min.js', false, false, null ),
        'vue-js' => array( 'https://unpkg.com/vue@2.4.2/dist/vue.js', false, false, null  ),        
        'vue-router-js' => array( 'https://unpkg.com/vue-router/dist/vue-router.js', array( 'vue-js' ), false, null ),
        'vue-x-js' => array( 'https://unpkg.com/vuex', array( 'vue-js' ), false, null ),       
        'bootstrap-js' => array( 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js', array( 'tether-js', 'jquery' ), false, null ),
-       'bootstrap-vue-js' => array( GAAD_KAM_ADMIN_URL . '/node_modules/bootstrap-vue/dist/bootstrap-vue.min.js', array( 'vue-js' ), false, null )
+       'bootstrap-vue-js' => array( APII_URL . '/node_modules/bootstrap-vue/dist/bootstrap-vue.min.js', array( 'vue-js' ), false, null )
        );
 
       /*
       * Force load core scripts from own serwer
       */
-      if ( !GAAD_KAM_ADMIN_CORE_SCRIPTS_CDN_USE ) {
-        $core[ 'vue-js' ][0] = GAAD_KAM_ADMIN_URL . '/node_modules/vue/dist/vue.min.js';
-        $core[ 'vue-router-js' ][0] = GAAD_KAM_ADMIN_URL . '/node_modules/vue-router/dist/vue-router.min.js';
-        $core[ 'vue-x-js' ][0] = GAAD_KAM_ADMIN_URL . '/node_modules/vuex/dist/vuex.min.js';
-        $core[ 'bootstrap-js' ][0] = GAAD_KAM_ADMIN_URL . '/node_modules/bootstrap/dist/js/bootstrap.min.js';
+      if ( !APII_CORE_SCRIPTS_CDN_USE ) {
+        $core[ 'vue-js' ][0] = APII_URL . '/node_modules/vue/dist/vue.min.js';
+        $core[ 'vue-router-js' ][0] = APII_URL . '/node_modules/vue-router/dist/vue-router.min.js';
+        $core[ 'vue-x-js' ][0] = APII_URL . '/node_modules/vuex/dist/vuex.min.js';
+        $core[ 'bootstrap-js' ][0] = APII_URL . '/node_modules/bootstrap/dist/js/bootstrap.min.js';
       }       
     }  
 
@@ -306,14 +306,15 @@ class actions {
   */
   public static function core_styles(){
 
-    if ( GAAD_KAM_ADMIN_ENV === 'DEV' ) {
+    if ( APII_ENV === 'DEV' ) {
 
        $core = array(
-         basename( GAAD_KAM_ADMIN_NAMESPACE ) . '-modules-min-css' => array( GAAD_KAM_ADMIN_URL . '/css/modules.min.css', false, false ),
-         'app-css' => array( GAAD_KAM_ADMIN_URL . '/css/app.css', false, false )
+           'bootstrap-css' => array( 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css', false, false ),
+           basename( APII_NAMESPACE ) . '-modules-min-css' => array( APII_URL . '/css/modules.min.css', false, false ),
+         'app-css' => array( APII_URL . '/css/app.css', false, false )
        );
 
-       $components = glob( GAAD_KAM_ADMIN_DIR . '/css/components/*.css' );
+       $components = glob( APII_DIR . '/css/components/*.css' );
        if ( !empty( $components ) ) {
          foreach ( $components as $file ) {
            $core[ str_replace( '.', '-', basename( $file ) ) ] = array(filters::dir_to_url( $file ), false, false );
@@ -322,13 +323,13 @@ class actions {
        
     }
 
-    if ( GAAD_KAM_ADMIN_ENV === 'DIST' ) {
+    if ( APII_ENV === 'DIST' ) {
       /*
       * Add styles to equeue to core table
       * Table index is a slug. Order of args is the same as in wp_enqueue_style function.
       */
        $core = array(
-         'tether-css' => array( GAAD_KAM_ADMIN_URL . '/node_modules/tether/dist/css/tether.min.css', false, false ),
+         'tether-css' => array( APII_URL . '/node_modules/tether/dist/css/tether.min.css', false, false ),
          'bootstrap-css' => array( 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css', false, false ),      
          'bootstrap-vue-css' => array( '//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css', false, false )
        );
@@ -336,9 +337,9 @@ class actions {
       /*
       * Force load core scripts from own serwer
       */
-      if ( !GAAD_KAM_ADMIN_CORE_SCRIPTS_CDN_USE ) {
-         $core[ 'bootstrap-css' ][0] = GAAD_KAM_ADMIN_URL . '/node_modules/bootstrap/dist/css/bootstrap.min.css';
-         $core[ 'bootstrap-vue-css' ][0] = GAAD_KAM_ADMIN_URL . '/node_modules/bootstrap-vue/dist/bootstrap-vue.min.css';
+      if ( APII_CORE_SCRIPTS_CDN_USE ) {
+         $core[ 'bootstrap-css' ][0] = APII_URL . '/node_modules/bootstrap/dist/css/bootstrap.min.css';
+         $core[ 'bootstrap-vue-css' ][0] = APII_URL . '/node_modules/bootstrap-vue/dist/bootstrap-vue.min.css';
 
       }      
 
@@ -348,6 +349,7 @@ class actions {
 
     foreach ($core as $lib => $data) {
       //if ( !wp_style_is( $lib ) ) {
+        var_dump($data);
         wp_enqueue_style( $lib, $data[0], $data[1], $data[2] );
       //}      
     }    

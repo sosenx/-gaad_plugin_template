@@ -1,16 +1,16 @@
 <?php 
-namespace kamadmin;
+namespace apii;
 
 
 class shortcodes {
 	/*
 	* This function appedns application to page from shortcode
 	*/
-	public static function kamadmin( $atts, $content = "" ) {
+	public static function apii( $atts, $content = "" ) {
 		$defaults = array( 
 			'id' => uniqid( '' )
 		);
-		$main_app_file = GAAD_KAM_ADMIN_APP_TEMPLATES_DIR . '/router.html';
+		$main_app_file = APII_APP_TEMPLATES_DIR . '/router.html';
 
 		$output = array();
 		if ( is_file( $main_app_file ) ) {
@@ -24,7 +24,7 @@ class shortcodes {
 
 	public static function no_main_shortcode_error(){		
 		$output = array();
- 		$shortcode = basename( constant( 'kamadmin\GAAD_KAM_ADMIN_SHORTCODE' ) );
+ 		$shortcode = basename( constant( 'apii\APII_SHORTCODE' ) );
     
     	$output[] = '<br><br>BRAK FUNKCJI: shortcodes::'.$shortcode . '<br><br>';
 		$r = implode( "\n", $output );

@@ -1,5 +1,5 @@
 <?php 
-namespace kamadmin;
+namespace apii;
 
 
 class hooks_mng{

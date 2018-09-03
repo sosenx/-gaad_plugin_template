@@ -1,5 +1,5 @@
 <?php 
-namespace kamadmin; 
+namespace apii;
 /**
 * Akcje administratora
 *
@@ -50,9 +50,11 @@ class admin_actions{
   
   
   public function admin_styles(){
-    
+
+
+    wp_enqueue_style( 'bootstrap-css', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css', false, false);
     wp_enqueue_style( 'font-awesomes-css', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', false, false);
-    wp_enqueue_style( 'kamadmin-css', GAAD_KAM_ADMIN_URL . '/css/app.css', false, false);
+    wp_enqueue_style( 'apii-admin-settings-css', APII_URL . '/css/settings.css', false, false);
 
     return $this;
   }
@@ -61,16 +63,16 @@ class admin_actions{
   public function admin_scripts(){
     
 
-    wp_enqueue_script( 'kamadmin-js', GAAD_KAM_ADMIN_URL . '/js/kam-admin.js', array('jquery'), false, null );
-    wp_enqueue_script( 'tether-js', GAAD_KAM_ADMIN_URL . '/node_modules/tether/dist/js/tether.min.js', false, false, null );
+    wp_enqueue_script( 'apii-js', APII_URL . '/js/admin-settings.js', array('jquery'), false, null );
+    wp_enqueue_script( 'tether-js', APII_URL . '/node_modules/tether/dist/js/tether.min.js', false, false, null );
     wp_enqueue_script( 'vue-js', 'https://unpkg.com/vue@2.4.2/dist/vue.js', false, false, null );
     wp_enqueue_script( 'vue-router-js', 'https://unpkg.com/vue-router/dist/vue-router.js', array( 'vue-js' ), false, null );
     wp_enqueue_script( 'vue-x-js', 'https://unpkg.com/vuex', array( 'vue-js' ), false, null );
     wp_enqueue_script( 'bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js', array( 'tether-js', 'jquery' ), false, null );
     
-    $mofile = GAAD_KAM_ADMIN_LANG_DIR .'/'. str_replace('\\', '', GAAD_KAM_ADMIN_NAMESPACE ) . '-' . \get_locale() .'.mo';
+    $mofile = APII_LANG_DIR .'/'. str_replace('\\', '', APII_NAMESPACE ) . '-' . \get_locale() .'.mo';
     if( is_file($mofile ) ){
-      load_textdomain( str_replace('\\', '', GAAD_KAM_ADMIN_NAMESPACE ), $mofile);
+      load_textdomain( str_replace('\\', '', APII_NAMESPACE ), $mofile);
     }
     
     return $this;
@@ -79,7 +81,7 @@ class admin_actions{
   /**
   * Generowanie szablonów aplikacji
   *
-  * Funkcja dołącza wszystkie pliki w katalogu GAAD_KAM_ADMIN_TEMPLATES_DIR/common oraz katalogu zdefiniowanym w stałej GAAD_KAM_ADMIN_ADMIN_TEMPLATES_DIR
+  * Funkcja dołącza wszystkie pliki w katalogu APII_TEMPLATES_DIR/common oraz katalogu zdefiniowanym w stałej APII_ADMIN_TEMPLATES_DIR
   * Zdefiniowa wewnątrz funkcji tablica $dirs przechowuje ścieżki do katalogów z szablonami do dołączenia.
   *
   * @param array $additional_directories tablica ścieżek z dodadkowymi plikami szablonów
@@ -89,8 +91,8 @@ class admin_actions{
   public static function admin_templates( $additional_directories = null ){ 
     
     $dirs = array_merge( array(
-      GAAD_KAM_ADMIN_TEMPLATES_DIR . '/common',
-      GAAD_KAM_ADMIN_ADMIN_TEMPLATES_DIR
+      APII_TEMPLATES_DIR . '/common',
+      APII_ADMIN_TEMPLATES_DIR
     ), is_array( $additional_directories ) ? $additional_directories : array() );
 
     foreach( $dirs as $dir ){

@@ -1,5 +1,5 @@
 <?php 
-namespace kamadmin;
+namespace apii;
 
 /*
 * 
@@ -27,7 +27,7 @@ class json_data {
   }
 
   function draw( $return = false ){
-    $string = 'var '. basename( constant( 'kamadmin\GAAD_KAM_ADMIN_NAMESPACE' ) ) .'__app_model ='. $this->getJson() .';';
+    $string = 'var '. basename( constant( 'apii\APII_NAMESPACE' ) ) .'__app_model ='. $this->getJson() .';';
     if ( !$return ) {
       echo $string;
     }
